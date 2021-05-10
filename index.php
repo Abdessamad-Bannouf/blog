@@ -5,5 +5,6 @@
     use App\Controllers\Controller; 
 
     $searchController = new Controller;
-    $searchController->SearchController();   
+    $searchController->SearchController();  
+    $a=0;
 ?>

@@ -56,5 +56,5 @@
 		{
 			require $File; // Requiet le fichier View concernée
 		}
-	} 
+	}
 ?>

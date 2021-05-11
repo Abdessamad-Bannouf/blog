@@ -52,6 +52,6 @@ var_dump($ControllerName);
 
 		protected function Render($File, $Data = array()){ // Prend en paramètre le fichier (View), et l'arraye contenant les données
 			require $File; // Requiet le fichier View concernée
-		}
+		} 
 	}
 ?>

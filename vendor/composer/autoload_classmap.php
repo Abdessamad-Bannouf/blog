@@ -14,3 +14,4 @@ return array(
     'App\\Controllers\\Controller' => $baseDir . '/App/Controller/Controller.php',
     'App\\Models\\Model' => $baseDir . '/App/Model/Model.php',
 );
+ 

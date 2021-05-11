@@ -11,5 +11,5 @@
         public function viewProfil($a = false){
             echo 'test'.$a ;
         }
-    }
+    } 
 ?>

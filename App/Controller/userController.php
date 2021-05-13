@@ -9,7 +9,7 @@
         } 
 
         public function viewProfil($id = false){
-            echo $id ;
+            echo $id ; 
         }
     } 
 ?>

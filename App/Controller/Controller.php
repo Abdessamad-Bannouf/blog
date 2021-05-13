@@ -21,13 +21,13 @@
 
 		public function SearchController(){ // Cherche le controller
  
-			$ControllerPath = 'App\Controllers\\'.$this->ControllerName.'Controller.php'; // Enregistre le nom du controller dans $ControllerPath
+			$ControllerPath = 'App\Controller\\'.$this->ControllerName.'Controller.php'; // Enregistre le nom du controller dans $ControllerPath
 
 			if(file_exists($ControllerPath)){ // Vérifie si le répertoire du controller existe
 				$objet = substr($ControllerPath,0,-4); //Enlève le '.php'
 
 				if(method_exists($objet, $this->MethodName) AND empty($this->ArgumentName)){ // Vérifie si la méthode existe et si il n'y a pas d'argument
-					$ControllerName = 'App\Controllers\\'.$this->ControllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
+					$ControllerName = 'App\Controller\\'.$this->ControllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 					$ConcernController = new $ControllerName($this->ControllerName, $this->MethodName); // Instancie le controller concerné
 
 					$ControllerMethod = $this->MethodName; // Stocke le nom de la méthode concerné dans $ControllerMethod
@@ -36,9 +36,9 @@
 
 					else if(method_exists($objet, $this->MethodName) AND !empty($this->ArgumentName)){ // Vérifie si la méthode existe et si il y a un argument
 						
-						$ControllerName = 'App\Controllers\\'.$this->ControllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
+						$ControllerName = 'App\Controller\\'.$this->ControllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 						$ConcernController = new $ControllerName($this->ControllerName, $this->MethodName, $this->ArgumentName); // Instancie le controller concerné
-var_dump($ControllerName);
+
 						$ControllerMethod = $this->MethodName; // Stocke le nom de la méthode concerné dans $ControllerMethod
 						$ControllerArgument = $this->ArgumentName; // Stocke le nom de la méthode concerné dans $ControllerArgument
 

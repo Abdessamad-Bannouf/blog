@@ -29,7 +29,7 @@
 				if(method_exists($objet, $this->MethodName) AND empty($this->ArgumentName)){ // Vérifie si la méthode existe et si il n'y a pas d'argument
 					$ControllerName = 'App\Controller\\'.$this->ControllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 					$ConcernController = new $ControllerName($this->ControllerName, $this->MethodName); // Instancie le controller concerné
-
+ 
 					$ControllerMethod = $this->MethodName; // Stocke le nom de la méthode concerné dans $ControllerMethod
 					$ConcernController->$ControllerMethod(); // Appelle la méthode concerné
 				}

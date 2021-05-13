@@ -16,7 +16,7 @@
 				$this->MyConnexion = new \PDO("mysql:host=".Host.";dbname=".DBName.";charset=utf8",UserName,Password);
 			}
 
-			catch(PDOException $e)
+			catch(\PDOException $e)
 			{
 				echo 'erreur de connexion à la base'.$e->getMessage();
 			}

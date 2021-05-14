@@ -29,12 +29,7 @@
 			$Sql = "SELECT ".$ColumnsNames." FROM ".$Table." WHERE ".$FilterColumn."='$FilterValue'";
 			$Filter = $this->dbConnect()->query($Sql);
 
-			while($donnees=$Filter->fetch())
-			{
-				$SelectFilter = $donnees["$FilterColumn"];
-			}
-
-			return $SelectFilter;
+			return $Filter;
 		}
 
 		protected function SelectAll($ColumnsNames = array(),$Table)
@@ -48,8 +43,9 @@
 		protected function Join($table,$Alias1,$TableJoin,$AliasJoin,$id,$IdJoin)
 		{
 			$Sql = "SELECT * FROM ".$table." AS ".$Alias1." JOIN ".$TableJoin." AS ".$AliasJoin." ON ".$Alias1.".".$id."=".$AliasJoin.".".$IdJoin. " WHERE ".$Alias1.".".$id."=".$TableJoin."";
-
-			return $Sql; 
+			$Join = $this->dbConnect($Sql);
+			
+			return $Join; 
 		}
 
 		protected function RequestInsert($table,$ColumnsNames = array(),$ColumnsValues = array())

@@ -6,4 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Classes\\Date\\Date' => $baseDir . '/App/Classes/Date/Date.php',
+    'App\\Classes\\Form\\Form' => $baseDir . '/App/Classes/Form/Form.php',
+    'App\\Classes\\Form\\Validate' => $baseDir . '/App/Classes/Form/Validate.php',
+    'App\\Classes\\Regex\\Regex' => $baseDir . '/App/Classes/Regex/Regex.php',
+    'App\\Classes\\Session\\Session' => $baseDir . '/App/Classes/Session/Session.php',
+    'App\\Controller\\UserController' => $baseDir . '/App/Controller/userController.php',
+    'App\\Controllers\\Controller' => $baseDir . '/App/Controller/Controller.php',
+    'App\\Models\\Model' => $baseDir . '/App/Model/Model.php',
+    'App\\Models\\UserModel' => $baseDir . '/App/Model/userModel.php',
 );

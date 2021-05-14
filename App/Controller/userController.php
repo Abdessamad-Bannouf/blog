@@ -1,6 +1,6 @@
 <?php 
-    namespace App\Controllers;
-    use App\Controllers\Controller;
+    namespace App\Controller;
+    use App\Controller\Controller;
 
     class UserController extends Controller{
 

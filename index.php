@@ -6,5 +6,4 @@
 
     $searchController = new Controller;
     $searchController->SearchController();  
-    $a=0;
 ?>

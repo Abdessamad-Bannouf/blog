@@ -1,6 +1,6 @@
 <?php 
-    namespace App\Models;
-    use App\Models\Model;
+    namespace App\Model;
+    use App\Model\Model;
 
     class UserModel extends Model{
         private $userId;

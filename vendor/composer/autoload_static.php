@@ -26,10 +26,10 @@ class ComposerStaticInit6359b5da2a02e6ea2be765e496da3293
         'App\\Classes\\Form\\Validate' => __DIR__ . '/../..' . '/App/Classes/Form/Validate.php',
         'App\\Classes\\Regex\\Regex' => __DIR__ . '/../..' . '/App/Classes/Regex/Regex.php',
         'App\\Classes\\Session\\Session' => __DIR__ . '/../..' . '/App/Classes/Session/Session.php',
+        'App\\Controller\\Controller' => __DIR__ . '/../..' . '/App/Controller/Controller.php',
         'App\\Controller\\UserController' => __DIR__ . '/../..' . '/App/Controller/userController.php',
-        'App\\Controllers\\Controller' => __DIR__ . '/../..' . '/App/Controller/Controller.php',
-        'App\\Models\\Model' => __DIR__ . '/../..' . '/App/Model/Model.php',
-        'App\\Models\\UserModel' => __DIR__ . '/../..' . '/App/Model/userModel.php',
+        'App\\Model\\Model' => __DIR__ . '/../..' . '/App/Model/Model.php',
+        'App\\Model\\UserModel' => __DIR__ . '/../..' . '/App/Model/userModel.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

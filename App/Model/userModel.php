@@ -3,7 +3,8 @@
     use App\Model\Model; 
 
     class UserModel extends Model{
-        private $userId;
-        
+        public function getUser($mail){
+            $getUserInfo = parent::SelectFilter(array('lastName','firstName'),'user','mail',$mail);
+        }
     }
 ?>

@@ -24,9 +24,14 @@
 			return $this->MyConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$FilterColumn, $FilterValue)
+		protected function SelectFilter($ColumnsNames = array(),$Table,$FilterColumn = array(), $FilterValue = array())
 		{
-			$Sql = "SELECT ".$ColumnsNames." FROM ".$Table." WHERE ".$FilterColumn."='$FilterValue'";
+			$Columns = implode(",", $ColumnsNames);
+
+			for($i=0; $i<count($FilterColumn); $i++){
+				$Sql = "SELECT ".$Columns." FROM ".$Table." WHERE ".$FilterColumn."='$FilterValue'";
+			}
+			
 			$Filter = $this->dbConnect()->query($Sql);
 
 			return $Filter;

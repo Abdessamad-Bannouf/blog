@@ -66,12 +66,16 @@
 
 			for($i=0;$i<count($ColumnsNames);$i++)
 			{
-				$ValueBind[$i] = "";
+				$ValueBind[$i] = ":";
 				$ValueBind[$i] .= $ColumnsValues[$i];
-				$a = $add->bindValue($ValueBind[$i],$ColumnsNames[$i],\PDO::PARAM_STR);
-			}
 
-			return $add;
+				$add->bindValue($ValueBind[$i],$ColumnsNames[$i],\PDO::PARAM_STR);
+				
+			}
+			
+			$this->RequestExecute($add);
+			
+			return true;
 		}
 
 		protected function RequestDelete($table,$ColumnName,$ColumnValue) 

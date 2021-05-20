@@ -12,6 +12,7 @@
                                                     array('lastName','firstName','mail','password','token','isAdmin'),
                                                     array($lastName,$firstName,$mail,$password,'NULL',0)
                                                 );
+                                                var_dump($getSubscribe);
         }
     }
 ?>

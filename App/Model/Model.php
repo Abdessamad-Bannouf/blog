@@ -24,52 +24,54 @@
 			return $this->MyConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$FilterColumn = array(), $FilterValue = array())
+		protected function SelectFilter($ColumnsNames = array(),$Table,$filterColumns = array(), $FilterValues = array())
 		{
-			$Columns = implode(",", $ColumnsNames);
+			$columns = implode(",", $ColumnsNames);
+			$columnsFilterColumn = implode(",", $filterColumns);
+			$columnsFilterValue = implode(",",$FilterValues);
 
-			for($i=0; $i<count($FilterColumn); $i++){
-				$Sql = "SELECT ".$Columns." FROM ".$Table." WHERE ".$FilterColumn."='$FilterValue'";
+			for($i=0; $i<count($filterColumns); $i++){
+				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE ".$columnsFilterColumn."='$columnsFilterValue'";
 			}
 			
-			$Filter = $this->dbConnect()->query($Sql);
+			$filter = $this->dbConnect()->query($Sql);
 
-			return $Filter;
+			return $filter;
 		}
 
-		protected function SelectAll($ColumnsNames = array(),$Table)
+		protected function SelectAll($columnsNames = array(),$table)
 		{
-			$Sql = "SELECT".$ColumnsNames."FROM".$Table;
+			$Sql = "SELECT".$columnsNames."FROM".$table;
 			$All = $this->dbConnect($Sql);
 
 			return $All;
 		}
 
-		protected function Join($table,$Alias1,$TableJoin,$AliasJoin,$id,$IdJoin)
+		protected function Join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
-			$Sql = "SELECT * FROM ".$table." AS ".$Alias1." JOIN ".$TableJoin." AS ".$AliasJoin." ON ".$Alias1.".".$id."=".$AliasJoin.".".$IdJoin. " WHERE ".$Alias1.".".$id."=".$TableJoin."";
+			$Sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
 			$Join = $this->dbConnect($Sql);
 			
 			return $Join; 
 		}
 
-		protected function RequestInsert($table,$ColumnsNames = array(),$ColumnsValues = array())
+		protected function RequestInsert($table,$columnsNames = array(),$columnsValues = array())
 		{			
 			$Values = "'";
-			$Columns = implode(",", $ColumnsNames);
-			$Values .= implode("','", $ColumnsValues);
+			$Columns = implode(",", $columnsNames);
+			$Values .= implode("','", $columnsNames);
 			$Values .= "'";
 
 			$Sql = 'INSERT INTO '.$table.' ('.$Columns.') VALUES('.$Values.')';
 
 			$add = $this->dbConnect()->prepare($Sql);
 
-			for($i=0;$i<count($ColumnsNames);$i++)
+			for($i=0;$i<count($columnsNames);$i++)
 			{
-				$ValueBind[$i] = ":";
-				$ValueBind[$i] .= $ColumnsValues[$i];
+				$valueBind[$i] = ":";
+				$valueBind[$i] .= $columnsValues[$i];
 
-				$add->bindValue($ValueBind[$i],$ColumnsNames[$i],\PDO::PARAM_STR);
+				$add->bindValue($valueBind[$i],$columnsNames[$i],\PDO::PARAM_STR);
 				
 			}
 			
@@ -78,24 +80,24 @@
 			return true;
 		}
 
-		protected function RequestDelete($table,$ColumnName,$ColumnValue) 
+		protected function RequestDelete($table,$columnName,$columnValue) 
 		{
 
-			$Sql = 'DELETE FROM '.$table.' WHERE '.$ColumnName.'=:'.$ColumnName.'';
+			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'=:'.$columnName.'';
 
 			$Delete = $this->dbConnect()->prepare($Sql);
-			$Delete->bindValue($ColumnName,$ColumnValue,\PDO::PARAM_INT);
+			$Delete->bindValue($columnName,$columnValue,\PDO::PARAM_INT);
 
 			return $Delete;		
 		}
 
-		protected function RequestModify($table,$ColumnsNames = array(),$ColumnsValues = array(),$DatasModify = array())
+		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$datasModify = array())
 		{
-			for($i=0;$i<count($ColumnsNames);$i++)
+			for($i=0;$i<count($columnsNames);$i++)
 			{
-				$Sql = 'UPDATE '.$table.' SET '.$ColumnsNames[$i].'="'.$DatasModify[$i].'" WHERE '.$ColumnsNames[0].'="'.$DatasModify[0].'"';
+				$Sql = 'UPDATE '.$table.' SET '.$columnsNames[$i].'="'.$datasModify[$i].'" WHERE '.$columnsNames[0].'="'.$datasModify[0].'"';
 				$Modify[$i] = $this->dbConnect()->prepare($Sql);
-				$Modify[$i]->bindValue($ColumnsNames[$i],$ColumnsValues[$i],\PDO::PARAM_INT);
+				$Modify[$i]->bindValue($columnsNames[$i],$columnsValues[$i],\PDO::PARAM_INT);
 			}
 
 			return $Modify;

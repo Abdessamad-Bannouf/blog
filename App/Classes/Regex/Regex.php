@@ -5,7 +5,7 @@
     {
         private $VerifMail;
         private $VerifPassword;
-        private $VerifName;
+        private $VerifFirstName;
 
         public function __construct($Inputs = array()) // Tableau associatif qui va contenir les différents inputs d'un form
         {
@@ -14,19 +14,36 @@
 			$this->VerifName = '/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/';
         }
 
-        public function VerifMail()
+        public function VerifMail($mail)
         {
-            return preg_match($VerifMail,Inputs['Mail']);
+            if(isset($_POST['mail']))
+                $mail = htmlspecialchars($mail);
+
+            return preg_match($this->VerifMail,$mail);
         }
 
-        public function VerifPassword()
+        public function VerifPassword($password)
         {
-            return preg_match($VerifPassword,Inputs['Password']);
+            if(isset($password))
+                $password = htmlspecialchars($password);
+
+            return preg_match($this->VerifPassword,$password);
         }
 
-        public function VerifName()
+        public function VerifFirstName($firstName)
         {
-            return preg_match($VerifName,Inputs['Name']);
+            if(isset($firstName))
+                $firstName = htmlspecialchars($firstName);
+
+            return preg_match($this->VerifFirstName,$firstName);
+        }
+
+        public function VerifLastName($lastName)
+        {
+            if(isset($lastName))
+                $lastName = htmlspecialchars($lastName);
+                
+            return preg_match($this->VerifLastName,$lastName);
         }
     }
 ?>

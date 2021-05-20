@@ -24,11 +24,10 @@ class UserController extends Controller{
         } 
 
         public function home(){
-            if(isset($_POST['mail'])){
+            /*if(isset($_POST['mail'])){
 
                 $mail = htmlspecialchars($_POST['mail']);
-                $this->userModel->getUser($mail);
-            }
+            }*/
 
             parent::Render('App/View/index.php',array());
         }
@@ -42,7 +41,9 @@ class UserController extends Controller{
                 $password = $_POST['password'];
                 $confirmPassword = $_POST['confirmPassword'];
 
-                $this->userModel->subscribeUser($lastName,$firstName,$mail,$password);          
+                $this->userModel->subscribeUser($lastName,$firstName,$mail,$password);   
+                var_dump($this->userModel->subscribeUser($lastName,$firstName,$mail,$password));        
+                
             }
 
             parent::Render('App/View/registerView.php',array());

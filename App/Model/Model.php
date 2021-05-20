@@ -57,12 +57,12 @@
 
 		protected function RequestInsert($table,$columnsNames = array(),$columnsValues = array())
 		{			
-			$Values = "'";
-			$Columns = implode(",", $columnsNames);
-			$Values .= implode("','", $columnsNames);
-			$Values .= "'";
+			$values = "'";
+			$columns = implode(",", $columnsNames);
+			$values .= implode("','", $columnsValues);
+			$values .= "'";
 
-			$Sql = 'INSERT INTO '.$table.' ('.$Columns.') VALUES('.$Values.')';
+			$Sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES('.$values.')';
 
 			$add = $this->dbConnect()->prepare($Sql);
 
@@ -76,6 +76,7 @@
 			}
 			
 			$this->RequestExecute($add);
+			var_dump($this->RequestExecute($add));
 			
 			return true;
 		}

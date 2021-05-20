@@ -29,19 +29,35 @@ class UserController extends Controller{
                 $mail = htmlspecialchars($_POST['mail']);
                 $this->userModel->getUser($mail);
             }
+
+            parent::Render('App/View/index.php',array());
         }
 
         public function register(){
-            if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password'])){
+            if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password']) AND isset($_POST['confirmPassword'])){
+
                 $lastName = $_POST['lastName'];
                 $firstName = $_POST['firstName'];
                 $mail = $_POST['mail']; 
                 $password = $_POST['password'];
+                $confirmPassword = $_POST['confirmPassword'];
 
-                $submitForm = $this->userModel->subscribeUser($lastName,$firstName,$mail,$password);           
+                $this->userModel->subscribeUser($lastName,$firstName,$mail,$password);          
             }
 
             parent::Render('App/View/registerView.php',array());
+        }
+
+        public function login(){
+            if(isset($_POST['mail']) AND isset($_POST['password'])){
+                $mail = $_POST['mail']; 
+                $password = $_POST['password'];
+
+                $this->userModel->getUser($mail,$password);
+
+            }
+
+            parent::Render('App/View/loginView.php',array());
         }
     } 
 ?>

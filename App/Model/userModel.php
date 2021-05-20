@@ -3,8 +3,8 @@
     use App\Model\Model; 
 
     class UserModel extends Model{
-        public function getUser($mail){
-            $getUserInfo = parent::SelectFilter(array('lastName','firstName'),'user','mail',$mail);
+        public function getUser($mail,$password){
+            $getUserInfo = parent::SelectFilter(array('mail','password'),'user',array('mail','password'),array($mail,$password));
         }
 
         public function subscribeUser($lastName,$firstName,$mail,$password){

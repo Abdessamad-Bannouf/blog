@@ -2,7 +2,7 @@
     namespace App\Controller;
     use App\Controller\Controller;
 
-    use App\Model\userModel;
+    use App\Model\UserModel;
 
     use App\Classes\Session\Session;
 
@@ -14,7 +14,7 @@ class UserController extends Controller{
         private $form;
 
         public function __construct(){
-            $this->userModel = new userModel;
+            $this->userModel = new UserModel;
 
             $this->session = new Session(array("lastName","firstName"),array("Bannouf","Abdessamad"));
 
@@ -26,6 +26,7 @@ class UserController extends Controller{
 
         public function login(){
             if(isset($_POST['mail']) AND isset($_POST['password'])){
+                
                 $mail = $_POST['mail']; 
                 $password = $_POST['password'];
 
@@ -33,7 +34,9 @@ class UserController extends Controller{
 
             }
 
-            parent::Render('App/View/loginView.php',array());
+            
         }
+        
+        parent::Render('App/View/loginView.php',array());
     } 
 ?>

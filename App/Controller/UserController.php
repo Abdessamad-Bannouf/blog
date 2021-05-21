@@ -34,9 +34,9 @@ class UserController extends Controller{
 
             }
 
-            
+            parent::Render('App/View/loginView.php',array());
         }
         
-        parent::Render('App/View/loginView.php',array());
+        
     } 
 ?>

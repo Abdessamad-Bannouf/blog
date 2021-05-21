@@ -27,9 +27,9 @@ class UserController extends Controller{
         public function login(){
             if(isset($_POST['mail']) AND isset($_POST['password'])){
                 
-                $mail = $_POST['mail']; 
-                $password = $_POST['password'];
-
+                $mail = htmlspecialchars($_POST['mail']); 
+                $password = htmlspecialchars($_POST['password']);
+                
                 $this->userModel->getUser($mail,$password);
 
             }

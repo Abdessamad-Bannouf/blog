@@ -48,17 +48,5 @@ class UserController extends Controller{
 
             parent::Render('App/View/registerView.php',array());
         }
-
-        public function login(){
-            if(isset($_POST['mail']) AND isset($_POST['password'])){
-                $mail = $_POST['mail']; 
-                $password = $_POST['password'];
-
-                $this->userModel->getUser($mail,$password);
-
-            }
-
-            parent::Render('App/View/loginView.php',array());
-        }
     } 
 ?>

@@ -17,7 +17,6 @@
 			$this->MethodName = $url[1];
 			if(!empty($url[2]))
 				$this->ArgumentName = $url[2];		
-                echo's'	;
 		}
 
 		public function SearchController(){ // Cherche le controller

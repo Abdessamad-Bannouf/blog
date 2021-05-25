@@ -76,7 +76,6 @@
 			}
 			
 			$this->RequestExecute($add);
-			var_dump($this->RequestExecute($add));
 			
 			return true;
 		}

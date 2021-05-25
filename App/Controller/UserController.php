@@ -25,12 +25,13 @@ class UserController extends Controller{
 
 
         public function register(){
-            if(isset($_POST['mail']) AND isset($_POST['password'])){
-                
+            if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password']) AND isset($_POST['confirmPassword'])){
+                $lastName = $_POST['lastName'];
+                $firstName = $_POST['firstName'];
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
                 
-                $this->userModel->getRegister($mail,$password);
+                $this->userModel->getRegister($lastName,$firstName,$mail,$password);
 
             }
 

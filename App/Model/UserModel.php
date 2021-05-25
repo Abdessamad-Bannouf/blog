@@ -3,12 +3,11 @@
     use App\Model\Model; 
 
     class UserModel extends Model{
-        public function getRegister($mail,$password){
-            $getUserInfo = parent::SelectFilter(array('mail','password'),'user',"user = $mail AND password = $password");
+        public function Register($lastName,$firstName,$mail,$password){
+            $addUser = parent::RequestInsert('user',array('lastName','firstName','mail','password','token','isAdmin'),array($lastName,$firstName,$mail,$password,'NULL',0));
 
-            $ifUserExists = $getUserInfo->rowCount();
 
-            var_dump($getUserInfo);
+            var_dump($addUser);
         }
     }
 ?>

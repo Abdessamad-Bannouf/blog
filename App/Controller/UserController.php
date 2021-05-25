@@ -31,7 +31,7 @@ class UserController extends Controller{
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
                 
-                $this->userModel->getRegister($lastName,$firstName,$mail,$password);
+                $this->userModel->addUser($lastName,$firstName,$mail,$password);
 
             }
 

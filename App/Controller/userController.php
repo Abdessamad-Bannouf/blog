@@ -31,22 +31,5 @@ class UserController extends Controller{
 
             parent::Render('App/View/index.php',array());
         }
-
-        public function register(){
-            if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password']) AND isset($_POST['confirmPassword'])){
-
-                $lastName = $_POST['lastName'];
-                $firstName = $_POST['firstName'];
-                $mail = $_POST['mail']; 
-                $password = $_POST['password'];
-                $confirmPassword = $_POST['confirmPassword'];
-
-                $this->userModel->subscribeUser($lastName,$firstName,$mail,$password);   
-                var_dump($this->userModel->subscribeUser($lastName,$firstName,$mail,$password));        
-                
-            }
-
-            parent::Render('App/View/registerView.php',array());
-        }
     } 
 ?>

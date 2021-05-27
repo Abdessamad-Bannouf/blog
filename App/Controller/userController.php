@@ -29,7 +29,9 @@ class UserController extends Controller{
                 $mail = htmlspecialchars($_POST['mail']);
             }*/
 
-            parent::Render('App/View/index.php',array());
+            $getUserInfo = $this->userModel->getUserInfo();
+            
+            parent::Render('App/View/index.php',array($getUserInfo));
         }
     } 
 ?>

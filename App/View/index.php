@@ -9,13 +9,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Mon blog</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
-    <link href="../App/Public/template/css/freelancer.min.css" rel="stylesheet">
+    <link href="../App/Public/template/css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -41,7 +41,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand" href="<?= WebSiteLink.'/User/home' ?>">Blog</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -68,18 +68,33 @@
 
     <!-- Header -->
     <header>
+<?php 
+    while($donnees = $Data['user']->fetch()){ 
+?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name">Start Bootstrap</span>
+                        <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
                         <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                        <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
+                        <span class="skills">Développeur web</span> 
+
+                        <p>
+                            mon CV PDF : <a style="color:white"target="_blank" href="../App/Public/file/CV.pdf">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            </a>
+                        </p>
+
+                        
                     </div>
                 </div>
             </div>
         </div>
+<?php 
+    } 
+?>
     </header>
 
     <!-- Portfolio Grid Section -->
@@ -243,8 +258,8 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+                        <p>3 Avenue des Ajoncs
+                            <br>13800 Istres</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -267,8 +282,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+                        <h3>A propos du Freelancer</h3>
+                        <p>Freelance est un template gratuit et open source crée par <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                     </div>
                 </div>
             </div>
@@ -277,7 +292,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+                        Copyright &copy; Blog 2021
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ class UserController extends Controller{
 
             $getUserInfo = $this->userModel->getUserInfo();
             
-            parent::Render('App/View/index.php',array($getUserInfo));
+            parent::Render('App/View/index.php',array('user'=>$getUserInfo));
         }
     } 
 ?>

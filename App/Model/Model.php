@@ -32,6 +32,13 @@
 			
 			$filter = $this->dbConnect()->query($Sql);
 
+			$Sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
+			
+			$filter = $this->dbConnect()->query($Sql);
+			
+			var_dump($Sql);
+
+
 			return $filter;
 		}
 
@@ -72,6 +79,9 @@
 			}
 			
 			$this->RequestExecute($add);
+
+
+			var_dump($this->RequestExecute($add));
 			
 			return true;
 		}

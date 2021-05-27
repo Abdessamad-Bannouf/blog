@@ -1,2 +1,4 @@
 /.history
-/App/Public/img/
+*.jpg
+*.jpeg
+*.png

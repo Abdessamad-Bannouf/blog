@@ -1,5 +1,5 @@
 <?php 
-    namespace App\Classes\Session;
+    namespace App\Classes\Security;
     
     class Security{
         public function hashPassword($password){

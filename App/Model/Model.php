@@ -28,11 +28,13 @@
 		{
 			$columns = implode(",", $ColumnsNames);
 
-			$Sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
+			$Sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
 			
 			$filter = $this->dbConnect()->query($Sql);
+
+			$Sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
 			
-			var_dump($Sql);
+			$filter = $this->dbConnect()->query($Sql);
 
 			return $filter;
 		}
@@ -74,7 +76,6 @@
 			}
 			
 			$this->RequestExecute($add);
-			var_dump($this->RequestExecute($add));
 			
 			return true;
 		}

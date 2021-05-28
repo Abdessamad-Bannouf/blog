@@ -503,12 +503,10 @@ fieldset[disabled] .btn-success.active {
   opacity: 0;
   display: none;
 }
-<<<<<<< HEAD
-=======
+
 .avatar {
   vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
->>>>>>> userPage

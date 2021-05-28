@@ -66,6 +66,17 @@ class UserController extends Controller{
             parent::Render('App/View/registerView.php',array('isRegister'=>$isRegister,
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
-        }  
-    } 
+        }   
+
+        public function home(){ 
+            /*if(isset($_POST['mail'])){
+                $mail = htmlspecialchars($_POST['mail']);
+            }*/
+            
+            $getUserInfo = $this->userModel->getUserInfo(); 
+             
+            parent::Render('App/View/index.php',array('user'=>$getUserInfo));  
+        } 
+    }   
+
 ?>

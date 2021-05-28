@@ -3,14 +3,10 @@
     use App\Model\Model; 
 
     class UserModel extends Model{
-        public function getUser($mail,$password){
-            $getUserInfo = parent::SelectFilter(array('mail','password'),'user',"user = $mail AND password = $password");
+        public function getUserInfo(){
+            $getUserInfo = parent::SelectFilter(array('lastName','firstName','mail','password','token','isAdmin'),'user',"mail = 'abdessamad.bannouf@laposte.net'");
 
-            $ifUserExists = $getUserInfo->rowCount();
-
-            var_dump($getUserInfo);
+            return $getUserInfo;
         }
     }
 ?>
-
-

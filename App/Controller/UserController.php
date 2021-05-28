@@ -67,18 +67,5 @@ class UserController extends Controller{
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
         }  
-
-
-        public function post($id = false){
-            /*if(isset($_POST['mail'])){
-                $mail = htmlspecialchars($_POST['mail']);
-            }*/
-
-
-            $post = $this->userModel->getPost();
-
-            parent::Render('App/View/post.php',array('post'=>$post));
-
-        }
     } 
 ?>

@@ -8,23 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Freelancer - Start Bootstrap Theme</title>
+    <title>Mon blog</title>
+
     <!-- Bootstrap Core CSS -->
     <link href="../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Theme CSS -->
-    <link href="../App/Public/template/css/freelancer.min.css" rel="stylesheet">
+    <link href="../App/Public/template/css/freelancer.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
+
 <body id="page-top" class="index">
+
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -35,6 +34,9 @@
                 </button>
                 <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
             </div>
+                <a class="navbar-brand" href="<?= WebSiteLink.'/User/home' ?>">Blog</a>
+            </div>
+
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
@@ -58,6 +60,11 @@
     </nav>
     <!-- Header -->
     <header>
+
+    <header>
+<?php 
+    while($donnees = $Data['user']->fetch()){ 
+?>
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -66,11 +73,22 @@
                         <span class="name">Start Bootstrap</span>
                         <hr class="star-light">
                         <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+                        <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
+                        <hr class="star-light">
+                        <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
+                        <span class="skills">Développeur web</span> 
+
+                        <p>
+                            mon CV PDF : <a style="color:white"target="_blank" href="../App/Public/file/CV.pdf">
+                                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                            </a>
+                        </p>                   
                     </div>
                 </div>
             </div>
         </div>
     </header>
+
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
@@ -144,6 +162,7 @@
             </div>
         </div>
     </section>
+
     <!-- About Section -->
     <section class="success" id="about">
         <div class="container">
@@ -168,6 +187,7 @@
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -222,6 +242,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -229,8 +250,9 @@
                 <div class="row">
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
+
+                        <p>3 Avenue des Ajoncs
+                            <br>13800 Istres</p>
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Around the Web</h3>
@@ -253,8 +275,10 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+
+                        <h3>A propos du Freelancer</h3>
+                        <p>Freelance est un template gratuit et open source crée par <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+
                     </div>
                 </div>
             </div>
@@ -263,18 +287,21 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        Copyright &copy; Your Website 2016
+
+                        Copyright &copy; Blog 2021
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
+
     <!-- Portfolio Modals -->
     <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-content">
@@ -498,6 +525,7 @@
             </div>
         </div>
     </div>
+
     <!-- jQuery -->
     <script src="../App/Public/template/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->

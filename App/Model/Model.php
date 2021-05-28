@@ -24,15 +24,18 @@
 			return $this->MyConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$filterValues)
+		protected function SelectFilter($ColumnsNames = array(),$Table,$filterValues = false)
 		{
 			$columns = implode(",", $ColumnsNames);
 
-			$Sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
+			if($filterValues)
+				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
+
+				else
+					$Sql = "SELECT ".$columns." FROM ".$Table."";
 			
 			$filter = $this->dbConnect()->query($Sql);
-			
-			var_dump($Sql);
+
 
 			return $filter;
 		}
@@ -74,6 +77,7 @@
 			}
 			
 			$this->RequestExecute($add);
+
 			
 			return true;
 		}

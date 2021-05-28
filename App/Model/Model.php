@@ -36,6 +36,7 @@
 			
 			$filter = $this->dbConnect()->query($Sql);
 
+
 			return $filter;
 		}
 
@@ -76,7 +77,6 @@
 			}
 			
 			$this->RequestExecute($add);
-			var_dump($this->RequestExecute($add));
 			
 			return true;
 		}

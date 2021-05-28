@@ -94,7 +94,7 @@
                         </p>
 
                         
->>>>>>> userPage
+
                     </div>
                 </div>
             </div>
@@ -105,7 +105,6 @@
 ?>
     </header>
 
->>>>>>> userPage
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">

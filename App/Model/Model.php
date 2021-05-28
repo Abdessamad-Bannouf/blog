@@ -36,7 +36,6 @@
 			
 			$filter = $this->dbConnect()->query($Sql);
 
-
 			return $filter;
 		}
 

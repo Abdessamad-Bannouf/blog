@@ -1,3 +1,5 @@
 /.history
-/Blog/App/Config/Config.php
-/Blog/App/Public/
+/App/Public/img/*.jpg
+*.jpeg
+*.png
+>>>>>>> post

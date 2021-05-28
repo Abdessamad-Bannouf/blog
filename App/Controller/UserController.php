@@ -23,15 +23,16 @@ class UserController extends Controller{
             $this->session->GetSession();
         } 
 
-        public function home(){
-            /*if(isset($_POST['mail'])){
+        public function login(){
+            if(isset($_POST['mail']) AND isset($_POST['password'])){
+                
+                $mail = htmlspecialchars($_POST['mail']); 
+                $password = htmlspecialchars($_POST['password']);
+                
+                $this->userModel->getUser($mail,$password);
+            }
 
-                $mail = htmlspecialchars($_POST['mail']);
-            }*/
-
-            $getUserInfo = $this->userModel->getUserInfo();
-            
-            parent::Render('App/View/index.php',array('user'=>$getUserInfo));
-        }
+            parent::Render('App/View/loginView.php',array());
+        } 
     } 
 ?>

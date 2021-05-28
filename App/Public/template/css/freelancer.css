@@ -503,6 +503,7 @@ fieldset[disabled] .btn-success.active {
   opacity: 0;
   display: none;
 }
+
 .avatar {
   vertical-align: middle;
   width: 50px;

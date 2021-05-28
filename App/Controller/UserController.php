@@ -4,19 +4,22 @@
 
     use App\Model\UserModel;
 
+
     use App\Classes\Session\Session;
 
     use App\Classes\Form\Form;
 
     use App\Classes\Security\Security;
 
-class UserController extends Controller{
+
+
+class PostController extends Controller{
+
         private $userModel;
         private $session;
         private $form;
 
         private $security;
-
 
         public function __construct(){
             $this->userModel = new UserModel;
@@ -27,8 +30,7 @@ class UserController extends Controller{
 
             $this->session->GetSession();
         } 
-
-
+ 
         public function login(){
             if(isset($_POST['mail']) AND isset($_POST['password'])){
                 
@@ -65,6 +67,17 @@ class UserController extends Controller{
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
         }  
-    } 
 
+        public function post($id = false){
+            /*if(isset($_POST['mail'])){
+                $mail = htmlspecialchars($_POST['mail']);
+            }*/
+
+
+            $post = $this->userModel->getPost();
+
+            parent::Render('App/View/post.php',array('post'=>$post));
+
+        }
+    } 
 ?>

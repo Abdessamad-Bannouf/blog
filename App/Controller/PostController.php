@@ -27,10 +27,17 @@ class PostController extends Controller{
             /*if(isset($_POST['mail'])){
                 $mail = htmlspecialchars($_POST['mail']);
             }*/
+<<<<<<< HEAD:App/Controller/PostController.php
 
             $post = $this->userModel->getPost();
 
             parent::Render('App/View/post.php',array('post'=>$post));
+=======
+            
+            $getUserInfo = $this->userModel->getUserInfo();
+            
+            parent::Render('App/View/index.php',array('user'=>$getUserInfo)); 
+>>>>>>> userPage:App/Controller/UserController.php
         }
     } 
 ?>

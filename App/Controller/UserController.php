@@ -13,7 +13,7 @@
 
 
 
-class PostController extends Controller{
+class UserController extends Controller{
 
         private $userModel;
         private $session;
@@ -30,7 +30,7 @@ class PostController extends Controller{
 
             $this->session->GetSession();
         } 
- 
+
         public function login(){
             if(isset($_POST['mail']) AND isset($_POST['password'])){
                 
@@ -67,6 +67,7 @@ class PostController extends Controller{
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
         }  
+
 
         public function post($id = false){
             /*if(isset($_POST['mail'])){

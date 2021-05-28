@@ -31,6 +31,7 @@
 			if($filterValues)
 				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
 
+
 				else
 					$Sql = "SELECT ".$columns." FROM ".$Table."";
 			

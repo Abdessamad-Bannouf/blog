@@ -2,7 +2,7 @@
     namespace App\Controller;
     use App\Controller\Controller;
 
-    use App\Model\UserModel;
+    use App\Model\userModel;
 
 
     use App\Classes\Session\Session;
@@ -10,7 +10,6 @@
     use App\Classes\Form\Form;
 
     use App\Classes\Security\Security;
-
 
 
 class UserController extends Controller{
@@ -22,7 +21,7 @@ class UserController extends Controller{
         private $security;
 
         public function __construct(){
-            $this->userModel = new UserModel;
+            $this->userModel = new userModel;
 
             $this->session = new Session(array("lastName","firstName"),array("Bannouf","Abdessamad"));
 
@@ -79,4 +78,5 @@ class UserController extends Controller{
         } 
     }   
 
+     
 ?>

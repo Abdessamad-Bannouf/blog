@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> authentification
     <title>Mon blog</title>
 
     <!-- Bootstrap Core CSS -->
@@ -22,6 +25,7 @@
     <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<<<<<<< HEAD
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -35,6 +39,12 @@
 </head>
 
 <body id="page-top" class="index">
+=======
+</head>
+
+<body id="page-top" class="index">
+
+>>>>>>> authentification
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -43,7 +53,12 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
+<<<<<<< HEAD
 
+=======
+                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
+            </div>
+>>>>>>> authentification
                 <a class="navbar-brand" href="<?= WebSiteLink.'/User/home' ?>">Blog</a>
             </div>
 
@@ -68,20 +83,33 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
+<<<<<<< HEAD
 
-
+=======
     <!-- Header -->
+    <header>
+>>>>>>> authentification
+
     <header>
 <?php 
     while($donnees = $Data['user']->fetch()){ 
 ?>
+<<<<<<< HEAD
 >>>>>>> userPage
+=======
+>>>>>>> authentification
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
+<<<<<<< HEAD
 
+=======
+                        <span class="name">Start Bootstrap</span>
+                        <hr class="star-light">
+                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
+>>>>>>> authentification
                         <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
                         <hr class="star-light">
                         <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
@@ -91,18 +119,25 @@
                             mon CV PDF : <a style="color:white"target="_blank" href="../App/Public/file/CV.pdf">
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                             </a>
+<<<<<<< HEAD
                         </p>
 
                         
 
+=======
+                        </p>                   
+>>>>>>> authentification
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
 <?php 
     } 
 ?>
+=======
+>>>>>>> authentification
     </header>
 
     <!-- Portfolio Grid Section -->
@@ -294,6 +329,10 @@
 
                         <h3>A propos du Freelancer</h3>
                         <p>Freelance est un template gratuit et open source crée par <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> authentification
                     </div>
                 </div>
             </div>
@@ -302,6 +341,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
+<<<<<<< HEAD
+=======
+
+>>>>>>> authentification
                         Copyright &copy; Blog 2021
                     </div>
                 </div>
@@ -542,21 +585,18 @@
 
     <!-- jQuery -->
     <script src="../App/Public/template/vendor/jquery/jquery.min.js"></script>
-
     <!-- Bootstrap Core JavaScript -->
     <script src="../App/Public/template/vendor/bootstrap/js/bootstrap.min.js"></script>
-
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
     <!-- Contact Form JavaScript -->
     <script src="../App/Public/template/js/jqBootstrapValidation.js"></script>
     <script src="../App/Public/template/js/contact_me.js"></script>
-
     <!-- Theme JavaScript -->
     <script src="../App/Public/template/js/freelancer.min.js"></script>
-
 </body>
-
 </html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> authentification

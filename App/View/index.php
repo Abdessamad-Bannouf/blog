@@ -8,11 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-<<<<<<< HEAD
-
-
-=======
->>>>>>> authentification
     <title>Mon blog</title>
 
     <!-- Bootstrap Core CSS -->
@@ -25,23 +20,9 @@
     <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-<<<<<<< HEAD
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 
 </head>
-
-<body id="page-top" class="index">
-=======
-</head>
-
 <body id="page-top" class="index">
 
 >>>>>>> authentification
@@ -53,12 +34,6 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-<<<<<<< HEAD
-
-=======
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
-            </div>
->>>>>>> authentification
                 <a class="navbar-brand" href="<?= WebSiteLink.'/User/home' ?>">Blog</a>
             </div>
 
@@ -83,33 +58,16 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-<<<<<<< HEAD
-
-=======
-    <!-- Header -->
-    <header>
->>>>>>> authentification
-
     <header>
 <?php 
     while($donnees = $Data['user']->fetch()){ 
 ?>
-<<<<<<< HEAD
->>>>>>> userPage
-=======
->>>>>>> authentification
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-<<<<<<< HEAD
 
-=======
-                        <span class="name">Start Bootstrap</span>
-                        <hr class="star-light">
-                        <span class="skills">Web Developer - Graphic Artist - User Experience Designer</span>
->>>>>>> authentification
                         <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
                         <hr class="star-light">
                         <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
@@ -119,25 +77,14 @@
                             mon CV PDF : <a style="color:white"target="_blank" href="../App/Public/file/CV.pdf">
                                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                             </a>
-<<<<<<< HEAD
-                        </p>
-
-                        
-
-=======
                         </p>                   
->>>>>>> authentification
                     </div>
                 </div>
             </div>
         </div>
-<<<<<<< HEAD
-
 <?php 
     } 
 ?>
-=======
->>>>>>> authentification
     </header>
 
     <!-- Portfolio Grid Section -->
@@ -588,3 +535,5 @@
     <script src="../App/Public/template/js/freelancer.min.js"></script>
 </body>
 </html>
+
+

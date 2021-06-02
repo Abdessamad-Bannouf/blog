@@ -36,7 +36,7 @@ class UserController extends Controller{
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
                 
-                $this->userModel->getUser($mail,$password);
+                $this->userModel->getUserInfo($mail,$password);
             }
 
             parent::Render('App/View/loginView.php',array());

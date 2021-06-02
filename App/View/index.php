@@ -329,10 +329,6 @@
 
                         <h3>A propos du Freelancer</h3>
                         <p>Freelance est un template gratuit et open source crée par <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-<<<<<<< HEAD
-=======
-
->>>>>>> authentification
                     </div>
                 </div>
             </div>
@@ -341,10 +337,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-<<<<<<< HEAD
-=======
-
->>>>>>> authentification
                         Copyright &copy; Blog 2021
                     </div>
                 </div>
@@ -596,7 +588,3 @@
     <script src="../App/Public/template/js/freelancer.min.js"></script>
 </body>
 </html>
-<<<<<<< HEAD
-
-=======
->>>>>>> authentification

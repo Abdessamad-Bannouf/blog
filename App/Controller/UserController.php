@@ -33,7 +33,6 @@ class UserController extends Controller{
                 
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
-                
 
                 $this->session = new Session(array("lastName","firstName"),array($mail,$password));
 

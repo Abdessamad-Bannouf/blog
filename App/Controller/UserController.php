@@ -16,8 +16,6 @@ class UserController extends Controller{
         public function __construct(){
             $this->userModel = new userModel;
 
-            $this->session = new Session(array("lastName","firstName"),array("Bannouf","Abdessamad"));
-
             $this->form = new Form;
 
             $this->session->GetSession();
@@ -28,8 +26,10 @@ class UserController extends Controller{
                 
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
-                
-                $this->userModel->getUser($mail,$password);
+
+                $this->session = new Session(array("lastName","firstName"),array($mail,$password));
+
+                $this->userModel->getUserInfo($mail,$password);
             }
 
             parent::Render('App/View/loginView.php',array());

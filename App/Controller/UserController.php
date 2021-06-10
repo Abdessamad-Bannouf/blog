@@ -18,6 +18,7 @@ class UserController extends Controller{
 
             $this->form = new Form;
 
+            $this->session = new Session;
             $this->session->GetSession();
         } 
 
@@ -29,10 +30,18 @@ class UserController extends Controller{
 
                 $this->session = new Session(array("lastName","firstName"),array($mail,$password));
 
-                $this->userModel->getUserInfo($mail,$password);
+                $getUserInfo = $this->userModel->getUserInfo($mail,$password);
+                $getUserInfo = $getUserInfo->fetchAll();
+
+                if($getUserInfo[0]['isAdmin'])
+                    header('location: '. WebSiteLink.'User/admin');
             }
 
             parent::Render('App/View/loginView.php',array());
         } 
+
+        public function admin(){
+            parent::Render('App/View/adminView.php',array());
+        }
     } 
 ?>

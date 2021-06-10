@@ -17,13 +17,14 @@ class UserController extends Controller{
         private $userModel;
         private $session;
         private $form;
-
         private $security;
 
         public function __construct(){
             $this->userModel = new userModel;
 
             $this->form = new Form;
+
+            $this->session = new Session;
 
             $this->session->GetSession();
         } 

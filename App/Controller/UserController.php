@@ -4,29 +4,28 @@
 
     use App\Model\userModel;
 
-
     use App\Classes\Session\Session;
 
     use App\Classes\Form\Form;
 
+    use App\Classes\Date\Date;
+
     use App\Classes\Security\Security;
 
-
-class UserController extends Controller{
-
+    class UserController extends Controller{
         private $userModel;
         private $session;
         private $form;
         private $security;
+        private $date;
+
 
         public function __construct(){
             $this->userModel = new userModel;
 
             $this->form = new Form;
 
-            $this->session = new Session;
-
-            $this->session->GetSession();
+            $this->date = Date::GetDate();
         } 
 
         public function login(){
@@ -35,14 +34,22 @@ class UserController extends Controller{
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
 
-                $this->session = new Session(array("lastName","firstName"),array($mail,$password));
+                $getUserInfo = $this->userModel->getUserInfo($mail,$password);
+                $getUserInfo = $getUserInfo->fetchAll();
+                
 
-                $this->userModel->getUserInfo($mail,$password);
+                $this->session = new Session(array("lastName","firstName", "user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0][5]));
+                $this->session->GetSession();
+
+                if($getUserInfo[0]['isAdmin'])
+                    header('location: '. WebSiteLink.'User/admin');
+
+                    else
+                        $this->home($getUserInfo[0]);
             }
 
             parent::Render('App/View/loginView.php',array());
         } 
-
 
         public function register(){
             $confirmPassword = null;
@@ -68,16 +75,45 @@ class UserController extends Controller{
                                                             ));
         }   
 
-        public function home(){ 
-            /*if(isset($_POST['mail'])){
-                $mail = htmlspecialchars($_POST['mail']);
-            }*/
-            
-            $getUserInfo = $this->userModel->getUserInfo(); 
-             
-            parent::Render('App/View/index.php',array('user'=>$getUserInfo));  
-        } 
-    }   
+        public function home($userData = false){ 
+            var_dump($userData);die();
+                         
+            parent::Render('App/View/index.php',array('user'=>$userData));  
+        }    
 
-     
+        public function admin(){    
+            parent::Render('App/View/adminView.php',array());
+        }
+
+        public function Update(){
+            if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+                $title = htmlspecialchars($_POST['title']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                $image = htmlspecialchars($_FILES['image']['name']);
+                $content = htmlspecialchars($_POST['content']);
+
+                $author = $_SESSION['user_id'];
+                
+                $this->userModel->updatePost($title,$chapo,$image,$content,$author,$this->date);
+            }
+            
+        }
+
+        public function Add(){
+            if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+                $title = htmlspecialchars($_POST['title']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                $image = htmlspecialchars($_FILES['image']['name']);
+                $content = htmlspecialchars($_POST['content']);
+
+                (int)$author = (int)$_SESSION['user_id'];
+                
+                $this->userModel->addPost($title,$chapo,$image,$content,$author,$this->date);
+            }
+        }
+
+        public function Delete($id){
+            var_dump($this->userModel->deletePost($id));
+        }
+    } 
 ?>

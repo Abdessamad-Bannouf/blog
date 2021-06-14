@@ -31,7 +31,6 @@
 			if($filterValues)
 				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
 
-
 				else
 					$Sql = "SELECT ".$columns." FROM ".$Table."";
 			
@@ -69,54 +68,60 @@
 
 			for($i=0;$i<count($columnsNames);$i++)
 			{
-				$valueBind[$i] = ":";
-				$valueBind[$i] .= $columnsValues[$i];
-
-				$add->bindValue($valueBind[$i],$columnsNames[$i],\PDO::PARAM_STR);
-				
+				$add->bindValue(':'.$columnsNames[$i],$columnsValues[$i],\PDO::PARAM_STR);
 			}
 			
 			$this->RequestExecute($add);
 			
-			return true;
+			return $add;
 		}
 
 		protected function RequestDelete($table,$columnName,$columnValue) 
 		{
 
-			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'=:'.$columnName.'';
+			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'= :'.$columnName.'';
 
-			$Delete = $this->dbConnect()->prepare($Sql);
-			$Delete->bindValue($columnName,$columnValue,\PDO::PARAM_INT);
+			$delete = $this->dbConnect()->prepare($Sql);
+			$delete->bindValue(':'.$columnName,$columnValue,\PDO::PARAM_INT);
 
-			return $Delete;		
+			$this->RequestExecute($delete);
+
+			return $delete;		
 		}
 
-		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$datasModify = array())
+		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$filterColumn, $filterValue)
 		{
+			$setValuesNames = "";
+			
 			for($i=0;$i<count($columnsNames);$i++)
 			{
-				$Sql = 'UPDATE '.$table.' SET '.$columnsNames[$i].'="'.$datasModify[$i].'" WHERE '.$columnsNames[0].'="'.$datasModify[0].'"';
-				$Modify[$i] = $this->dbConnect()->prepare($Sql);
-				$Modify[$i]->bindValue($columnsNames[$i],$columnsValues[$i],\PDO::PARAM_INT);
+				if($i == count($columnsNames)-1){
+					$setValuesNames = $setValuesNames.$columnsNames[$i].' = :'.$columnsNames[$i].'';
+					break;
+				}
+
+				$setValuesNames = $setValuesNames.$columnsNames[$i].' = :'.$columnsNames[$i].', ';
 			}
 
-			return $Modify;
+			$Sql = 'UPDATE '.$table.' SET '.$setValuesNames.' WHERE '.$filterColumn.' = :'.$filterColumn.'';		
+
+			$modify = $this->dbConnect()->prepare($Sql);
+
+			for($i=0;$i<count($columnsNames);$i++)
+			{
+				$modify->bindValue(':'.$columnsNames[$i],$columnsValues[$i],\PDO::PARAM_STR);				
+			}
+
+			$modify->bindValue(':'.$filterColumn,$filterValue,\PDO::PARAM_INT);
+
+			$this->RequestExecute($modify);
+
+			return $modify;
 		}
 
 		protected function RequestExecute($SQLRequest)
-		{	
-			/* POUR LA REQUEST MODIFY */
-			if(is_array($SQLRequest))
-			{
-				for($i=0;$i<count($SQLRequest);$i++)
-				{ 
-					$RequestExecute = $SQLRequest[$i]->execute();
-				}
-			}
-
-				else
-					$RequestExecute = $SQLRequest->execute();
+		{			
+			$RequestExecute = $SQLRequest->execute();
 		}
 	}
 ?>

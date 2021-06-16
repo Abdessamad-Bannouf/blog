@@ -12,7 +12,7 @@
             return $addUser; 
         }
 
-        public function getUserInfo($mail,$password){
+        public function getUserInfo($mail){
 
             $getUserInfo = parent::SelectFilter(array('lastName','firstName','mail','password','token','isAdmin'),'user',"mail = '$mail'");
 
@@ -25,7 +25,7 @@
         }
 
         public function updatePost($title,$chapo,$image,$content,$author,$date){
-            $updatePost = parent::RequestModify('post',array('title','chapo','image','content','author','date','isValid'),array($title,$chapo,$image,$content,$author,$date,0),'post_id',22);
+            $updatePost = parent::RequestModify('post',array('title','chapo','image','content','author','date','isValid'),array($title,$chapo,$image,$content,$author,$date,0),'post_id','24');
         }
 
         public function deletePost($id){

@@ -26,6 +26,8 @@
             $this->form = new Form;
 
             $this->date = Date::GetDate();
+
+            $this->security = new Security;
         } 
 
         public function login(){
@@ -37,6 +39,8 @@
                 $getUserInfo = $this->userModel->getUserInfo($mail,$password);
                 $getUserInfo = $getUserInfo->fetchAll();
                 
+                //Ajouter la verif password-verify
+                var_dump($this->security->decryptPassword($password,$getUserInfo[0]['password'])); die();
 
                 $this->session = new Session(array("lastName","firstName", "user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0][5]));
                 $this->session->GetSession();
@@ -54,8 +58,6 @@
         public function register(){
             $confirmPassword = null;
             $isRegister = null;
-
-            $this->security = new Security;
 
             if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password']) AND isset($_POST['confirmPassword'])){
                 $lastName = $_POST['lastName'];

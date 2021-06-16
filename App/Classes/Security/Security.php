@@ -9,12 +9,8 @@
         }
 
         public function decryptPassword($formPassword, $DBPassword){
-            if(password_verify($formPassword, $DBPassword)) {
-                echo 'Password is valid!';
-            } 
-                else {
-                    echo 'Invalid password.';
-                }
+            return password_verify($formPassword, $DBPassword);
+
         }
     }
 ?>

@@ -41,7 +41,7 @@
                 
                 //Ajouter la verif password-verify
                 var_dump($this->security->decryptPassword($password,$getUserInfo[0]['password'])); die();
-
+var_dump($getUserInfo);
                 $this->session = new Session(array("lastName","firstName", "user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0][5]));
                 $this->session->GetSession();
 

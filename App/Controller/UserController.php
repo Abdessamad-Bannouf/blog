@@ -47,7 +47,7 @@
                     $this->session->GetSession();
                 
                     if($getUserInfo[0]['isAdmin'])
-                        header('location: '. WebSiteLink.'Admin/Admin');
+                        header('location: '. WebSiteLink.'Admin/Index');
 
                         else
                             return $this->home();                

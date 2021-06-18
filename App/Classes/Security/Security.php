@@ -7,5 +7,10 @@
 
             return $finalPassword;
         }
+
+        public function decryptPassword($formPassword, $DBPassword){
+            return password_verify($formPassword, $DBPassword);
+
+        }
     }
 ?>

@@ -31,7 +31,7 @@
         } 
 
         public function admin(){    
-            parent::Render('App/View/adminView.php',array());
+            parent::Render('App/View/AdminView.php',array());
         }
 
         public function update(){

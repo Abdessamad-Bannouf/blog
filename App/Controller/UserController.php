@@ -43,11 +43,11 @@
                 $passwordVerified = $this->security->decryptPassword($password,$getUserInfo[0]['password']);
 
                 if($passwordVerified){
-                    $this->session = new Session(array("lastName","firstName","mail","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0][5]));
+                    $this->session = new Session(array("lastName","firstName","mail","isAdmin","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0]['isAdmin'],$getUserInfo[0][5]));
                     $this->session->GetSession();
                 
                     if($getUserInfo[0]['isAdmin'])
-                    header('location: '. WebSiteLink.'User/admin');
+                        header('location: '. WebSiteLink.'User/admin');
 
                         else
                             return $this->home();                
@@ -111,7 +111,7 @@
             parent::Render('App/View/adminView.php',array());
         }
 
-        public function Update(){
+        public function update(){
             if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
                 $title = htmlspecialchars($_POST['title']);
                 $chapo = htmlspecialchars($_POST['chapo']);
@@ -125,7 +125,7 @@
             
         }
 
-        public function Add(){
+        public function add(){
             if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
                 $title = htmlspecialchars($_POST['title']);
                 $chapo = htmlspecialchars($_POST['chapo']);
@@ -138,7 +138,7 @@
             }
         }
 
-        public function Delete($id){
+        public function delete($id){
             var_dump($this->userModel->deletePost($id));
         }
     } 

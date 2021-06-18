@@ -25,8 +25,6 @@ class PostController extends Controller{
             $post = $this->userModel->getPost();
 
             parent::Render('App/View/post.php',array('post'=>$post));
-
-
         }
     } 
 ?>

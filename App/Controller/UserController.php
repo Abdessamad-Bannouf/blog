@@ -47,7 +47,7 @@
                     $this->session->GetSession();
                 
                     if($getUserInfo[0]['isAdmin'])
-                        header('location: '. WebSiteLink.'User/admin');
+                        header('location: '. WebSiteLink.'Admin/Admin');
 
                         else
                             return $this->home();                
@@ -74,7 +74,7 @@
                 }
             }
 
-            parent::Render('App/View/registerView.php',array('isRegister'=>$isRegister,
+            parent::Render('App/View/RegisterView.php',array('isRegister'=>$isRegister,
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
         }   
@@ -82,7 +82,7 @@
         public function home(){ 
             $getUserInfo = $this->userModel->getUserInfo($_SESSION['mail']);
 
-            parent::Render('App/View/index.php',array('user'=>$getUserInfo));  
+            parent::Render('App/View/IndexView.php',array('user'=>$getUserInfo));  
         }    
 
         public function sendMail(){

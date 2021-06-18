@@ -4,8 +4,6 @@
 
     use App\Model\PostModel;
 
-    use App\Classes\Session\Session;
-
     use App\Classes\Form\Form;
 
 class PostController extends Controller{
@@ -17,8 +15,6 @@ class PostController extends Controller{
             $this->userModel = new PostModel;
 
             $this->form = new Form;
-
-            $this->session->getSession();
         } 
 
         public function post($id = false){

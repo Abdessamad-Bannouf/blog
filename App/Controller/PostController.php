@@ -16,21 +16,17 @@ class PostController extends Controller{
         public function __construct(){
             $this->userModel = new PostModel;
 
-            $this->session = new Session(array("lastName","firstName"),array("Bannouf","Abdessamad"));
-
             $this->form = new Form;
 
-            $this->session->GetSession();
+            $this->session->getSession();
         } 
 
         public function post($id = false){
-            /*if(isset($_POST['mail'])){
-                $mail = htmlspecialchars($_POST['mail']);
-            }*/
-
             $post = $this->userModel->getPost();
 
             parent::Render('App/View/post.php',array('post'=>$post));
+
+
         }
     } 
 ?>

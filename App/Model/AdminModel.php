@@ -2,7 +2,13 @@
     namespace App\Model;
     use App\Model\Model; 
 
-    class UserModel extends Model{
+    class AdminModel extends Model{
+        public function index(){
+            $allPost = parent::SelectAll('*','post');
+            
+            return $allPost;
+        }
+
         public function addPost($title,$chapo,$image,$content,$author,$date){
             $addPost = parent::RequestInsert('post',array('title','chapo','image','content','author','date','isValid'),array($title,$chapo,$image,$content,$author,$date,0));
         }

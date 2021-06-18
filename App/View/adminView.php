@@ -7,11 +7,28 @@
         <link href="../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <script src="../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         <link href="../App/Public/template/css/post.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../App/Public/css/post.css" />
     </head>
 
     <body>
+        <?php 
+            while($donnees = $Data['post']->fetch()):
+        ?>
+
+                <div class="col-md-10 blogShort">
+                        <h1><?= $donnees['title'] ?></h1>
+                        <h3><?= $donnees['chapo'] ?></h3>
+                        <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
+                        <article><p>
+                            <?= $donnees['content'] ?>  
+                        </p></article>
+                        <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">Lire plus</a> 
+                </div>
+        <?php 
+            endwhile;
+        ?>
         <a>
-            <button class="btn btn-success" onclick="add()">
+            <button class="btn btn-success " onclick="add()">
                 Ajouter article
             </button>
         </a>
@@ -21,10 +38,6 @@
                 Modifier article
             </button>
         </a>
-
-        <div>
-        </div>
-
 
         <div class="container-fluid">
             <form method="post" action='<?= WebSiteLink ?>User/Add' enctype="multipart/form-data">            

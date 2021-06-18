@@ -41,8 +41,8 @@
 
 		protected function SelectAll($columnsNames = array(),$table)
 		{
-			$Sql = "SELECT".$columnsNames."FROM".$table;
-			$All = $this->dbConnect($Sql);
+			$Sql = "SELECT ".$columnsNames." FROM ".$table;
+			$All = $this->dbConnect()->query($Sql);
 
 			return $All;
 		}

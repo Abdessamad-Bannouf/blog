@@ -2,7 +2,7 @@
     namespace App\Controller;
     use App\Controller\Controller;
 
-    use App\Model\userModel;
+    use App\Model\AdminModel;
 
     use App\Classes\Session\Session;
 
@@ -13,7 +13,7 @@
     use App\Classes\Security\Security;
 
     class AdminController extends Controller{
-        private $userModel;
+        private $adminModel;
         private $session;
         private $form;
         private $security;
@@ -21,7 +21,7 @@
 
 
         public function __construct(){
-            $this->userModel = new userModel;
+            $this->adminModel = new AdminModel;
 
             $this->form = new Form;
 
@@ -30,8 +30,10 @@
             $this->security = new Security;
         } 
 
-        public function admin(){    
-            parent::Render('App/View/AdminView.php',array());
+        public function index(){    
+            $allPost = $this->adminModel->index();
+
+            parent::Render('App/View/AdminView.php',array('post'=>$allPost));
         }
 
         public function update(){

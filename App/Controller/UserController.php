@@ -107,6 +107,7 @@
                 }		
             }
         }
+        
         public function admin(){    
             parent::Render('App/View/adminView.php',array());
         }

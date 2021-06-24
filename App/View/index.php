@@ -89,7 +89,7 @@
     <!-- Header -->
     <header>
 <?php 
-    while($donnees = $Data['user']->fetch()){ 
+    while($donnees = $data['user']->fetch()){ 
 ?>
         <div class="container">
             <div class="row">

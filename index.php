@@ -6,5 +6,5 @@
     use App\Controller\Controller; 
 
     $searchController = new Controller;
-    $searchController->SearchController();  
+    $searchController->searchController();  
 ?>

@@ -14,7 +14,7 @@
 
         public function getUserInfo($mail){
 
-            $getUserInfo = parent::SelectFilter(array('lastName','firstName','mail','password','token','isAdmin'),'user',"mail = '$mail'");
+            $getUserInfo = parent::SelectFilter(array('user_id','lastName','firstName','mail','password','token','isAdmin'),'user',"mail = '$mail'");
 
             return $getUserInfo;
         }

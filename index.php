@@ -8,5 +8,5 @@
     session_start();
 
     $searchController = new Controller;
-    $searchController->SearchController();  
+    $searchController->searchController();  
 ?>

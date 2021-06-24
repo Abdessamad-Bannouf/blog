@@ -24,7 +24,7 @@
 			return $this->MyConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$filterValues = false)
+		protected function selectFilter($ColumnsNames = array(),$Table,$filterValues = false)
 		{
 			$columns = implode(",", $ColumnsNames);
 
@@ -39,7 +39,7 @@
 			return $filter;
 		}
 
-		protected function SelectAll($columnsNames = array(),$table)
+		protected function selectAll($columnsNames = array(),$table)
 		{
 			$Sql = "SELECT".$columnsNames."FROM".$table;
 			$All = $this->dbConnect($Sql);
@@ -47,7 +47,7 @@
 			return $All;
 		}
 
-		protected function Join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
+		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
 			$Sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
 			$Join = $this->dbConnect($Sql);
@@ -55,7 +55,7 @@
 			return $Join; 
 		}
 
-		protected function RequestInsert($table,$columnsNames = array(),$columnsValues = array())
+		protected function requestInsert($table,$columnsNames = array(),$columnsValues = array())
 		{			
 			$values = "'";
 			$columns = implode(",", $columnsNames);
@@ -71,12 +71,12 @@
 				$add->bindValue(':'.$columnsNames[$i],$columnsValues[$i],\PDO::PARAM_STR);
 			}
 			
-			$this->RequestExecute($add);
+			$this->requestExecute($add);
 			
 			return $add;
 		}
 
-		protected function RequestDelete($table,$columnName,$columnValue) 
+		protected function requestDelete($table,$columnName,$columnValue) 
 		{
 
 			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'= :'.$columnName.'';
@@ -84,12 +84,12 @@
 			$delete = $this->dbConnect()->prepare($Sql);
 			$delete->bindValue(':'.$columnName,$columnValue,\PDO::PARAM_INT);
 
-			$this->RequestExecute($delete);
+			$this->requestExecute($delete);
 
 			return $delete;		
 		}
 
-		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$filterColumn, $filterValue)
+		protected function requestModify($table,$columnsNames = array(),$columnsValues = array(),$filterColumn, $filterValue)
 		{
 			$setValuesNames = "";
 			
@@ -114,12 +114,12 @@
 
 			$modify->bindValue(':'.$filterColumn,$filterValue,\PDO::PARAM_INT);
 
-			$this->RequestExecute($modify);
+			$this->requestExecute($modify);
 
 			return $modify;
 		}
 
-		protected function RequestExecute($SQLRequest)
+		protected function requestExecute($SQLRequest)
 		{			
 			$RequestExecute = $SQLRequest->execute();
 		}

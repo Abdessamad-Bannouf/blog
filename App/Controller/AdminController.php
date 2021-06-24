@@ -42,27 +42,27 @@
                 $getPost = $this->adminModel->updatePost($id);
                 $getPost = $getPost->fetch(); 
 
+                $this->session = new Session(array('idPost'),array($id));
+                $this->session->getSession();
+
                 parent::Render('App/View/AdminUpdateView.php',array("post"=>$getPost));
             }
 
-            if(isset($_SESSION['idPost']) AND isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-
+            if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+ 
                 $title = htmlspecialchars($_POST['title']);
                 $chapo = htmlspecialchars($_POST['chapo']);
                 $image = htmlspecialchars($_FILES['image']['name']);
                 $content = htmlspecialchars($_POST['content']);
 
                 $author = $_SESSION['user_id'];
+                $idPost = $_SESSION['idPost'];
+                var_dump($title);
                 
-                $this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$idPost);
-                var_dump($this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$idPost));
+                $this->adminModel->updatePost($idPost,$title,$chapo,$image,$content,$author,$this->date);
+                //var_dump($this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$idPost));
 
-                parent::Render('App/View/AdminView.php',array(  
-                                                                'title'=>$title,
-                                                                'chapo'=>$chapo,
-                                                                'image'=>$image,
-                                                                'content'=>$content
-                                                            ));
+                header('location: '.WebSiteLink.'admin/index');
             }
 
             //var_dump($this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$id));             

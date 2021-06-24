@@ -108,7 +108,6 @@
             function add()
             {
                 document.getElementsByTagName("form")[0].style.display = "block";
-                document.getElementsByTagName("form")[1].style.display = "none";
             }
     </script>
 </html>

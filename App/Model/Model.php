@@ -35,7 +35,7 @@
 				else
 					$sql = "SELECT ".$columns." FROM ".$Table."";
 			
-			$filter = $this->dbConnect()->query($Sql);
+			$filter = $this->dbConnect()->query($sql);
 
 			return $filter;
 		}

@@ -39,15 +39,17 @@
         public function update($id=false){
 
             if($id != false){
-                $getIdPost = $this->adminModel->updatePost($id);
-                $getIdPost = $getIdPost->fetch(); 
+                $getPost = $this->adminModel->updatePost($id);
+                $getPost = $getPost->fetch(); 
 
-                $this->session = new Session(array('idPost'), array($getIdPost));
-                $this->session->GetSession();
+                //$this->session = new Session(array('idPost'), array($getIdPost));
+                //$this->session->getSession();
+
+                parent::Render('App/View/AdminUpdateView.php',array("post"=>$getPost));
             }
 
             if(isset($_SESSION['idPost']) AND isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-
+            var_dump($_SESSION['idPost']);
                 $idPost = $getIdPost['post_id'];
 
                 $title = htmlspecialchars($_POST['title']);
@@ -68,10 +70,7 @@
                                                             ));
             }
 
-            //var_dump($this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$id));
-            parent::Render('App/View/AdminUpdateView.php',array());
-            
-            
+            //var_dump($this->adminModel->updatePost($title,$chapo,$image,$content,$author,$this->date,$id));             
         }
 
         public function add(){

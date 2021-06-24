@@ -42,15 +42,10 @@
                 $getPost = $this->adminModel->updatePost($id);
                 $getPost = $getPost->fetch(); 
 
-                //$this->session = new Session(array('idPost'), array($getIdPost));
-                //$this->session->getSession();
-
                 parent::Render('App/View/AdminUpdateView.php',array("post"=>$getPost));
             }
 
             if(isset($_SESSION['idPost']) AND isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-            var_dump($_SESSION['idPost']);
-                $idPost = $getIdPost['post_id'];
 
                 $title = htmlspecialchars($_POST['title']);
                 $chapo = htmlspecialchars($_POST['chapo']);

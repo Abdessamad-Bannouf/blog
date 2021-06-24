@@ -24,9 +24,9 @@
 			return $this->myConnexion;
 		}
 
-		protected function selectFilter($ColumnsNames = array(),$Table,$filterValues = false)
+		protected function selectFilter($columnsNames = array(),$Table,$filterValues = false)
 		{
-			$columns = implode(",", $ColumnsNames);
+			$columns = implode(",", $columnsNames);
 
 			if($filterValues)
 				$sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";

@@ -52,7 +52,13 @@
                             <div class="col-sm-12">
                                 <div class="inputBox">
                                     <div class="inputText">Image</div>
-                                    <input type="file" name="image" class="input">
+                                    <?php if(isset($data['post']['image'])){ ?>
+                                        <input type="file" name="image" class="input" value="C:\wamp64\www\Blog\App\Public\img\image_deux.jpg">
+                                    <?php }
+
+                                    else{ ?>
+                                        <input type="text" name="chapo" class="input">
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -61,8 +67,14 @@
                             <div class="col-sm-12">
                                 <div class="inputBox">
                                     <div class="inputText">Message</div>
-                                    <textarea class="input" name="content"></textarea>
-                                </div>
+                                    <?php if(isset($data['post']['content'])){ ?>
+                                        <textarea class="input" name="content"><?= $data['post']['content']; ?></textarea>
+                                    <?php }    
+                                    
+                                    else{ ?>
+                                        <textarea class="input" name="content"></textarea>
+                                    <?php } ?>
+                                    </div>
                             </div>
                         </div>
 
@@ -78,12 +90,6 @@
     </body>
     <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-
-        $(".input").focus(function() {
-            $(this).parent().addClass("focus");
-        })   
-        });
 
         document.getElementsByTagName("form")[0].style.display = "block";
     </script>

@@ -3,10 +3,10 @@
 
 	class Model
 	{
-		private $Host;
-		private $DBName;
-		private $UserName;
-		private $Password;
+		private $host;
+		private $dbName;
+		private $userName;
+		private $password;
 		protected $myConnexion;
 
 		protected function dbConnect()

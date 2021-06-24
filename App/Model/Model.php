@@ -7,13 +7,13 @@
 		private $DBName;
 		private $UserName;
 		private $Password;
-		protected $MyConnexion;
+		protected $myConnexion;
 
 		protected function dbConnect()
 	    {
 			try
 			{
-				$this->MyConnexion = new \PDO("mysql:host=".Host.";dbname=".DBName.";charset=utf8",UserName,Password);
+				$this->myConnexion = new \PDO("mysql:host=".Host.";dbname=".DBName.";charset=utf8",UserName,Password);
 			}
 
 			catch(\PDOException $e)
@@ -21,10 +21,10 @@
 				echo 'erreur de connexion à la base'.$e->getMessage();
 			}
 
-			return $this->MyConnexion;
+			return $this->myConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$filterValues = false)
+		protected function selectFilter($ColumnsNames = array(),$Table,$filterValues = false)
 		{
 			$columns = implode(",", $ColumnsNames);
 
@@ -40,7 +40,7 @@
 			return $filter;
 		}
 
-		protected function SelectAll($columnsNames = array(),$table)
+		protected function selectAll($columnsNames = array(),$table)
 		{
 			$Sql = "SELECT".$columnsNames."FROM".$table;
 			$All = $this->dbConnect($Sql);
@@ -48,7 +48,7 @@
 			return $All;
 		}
 
-		protected function Join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
+		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
 			$Sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
 			$Join = $this->dbConnect($Sql);
@@ -56,7 +56,7 @@
 			return $Join; 
 		}
 
-		protected function RequestInsert($table,$columnsNames = array(),$columnsValues = array())
+		protected function requestInsert($table,$columnsNames = array(),$columnsValues = array())
 		{			
 			$values = "'";
 			$columns = implode(",", $columnsNames);
@@ -72,12 +72,12 @@
 				$add->bindValue(':'.$columnsNames[$i],$columnsValues[$i],\PDO::PARAM_STR);
 			}
 			
-			$this->RequestExecute($add);
+			$this->requestExecute($add);
 			
 			return $add;
 		}
 
-		protected function RequestDelete($table,$columnName,$columnValue) 
+		protected function requestDelete($table,$columnName,$columnValue) 
 		{
 
 			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'= :'.$columnName.'';
@@ -90,7 +90,7 @@
 			return $delete;		
 		}
 
-		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$filterColumn, $filterValue)
+		protected function requestModify($table,$columnsNames = array(),$columnsValues = array(),$filterColumn, $filterValue)
 		{
 			$setValuesNames = "";
 			
@@ -113,16 +113,16 @@
 				$modify->bindValue(':'.$columnsNames[$i],$columnsValues[$i],\PDO::PARAM_STR);				
 			}
 
-			$Modify->bindValue(':'.$filterColumn,$filterValue,\PDO::PARAM_INT);
+			$modify->bindValue(':'.$filterColumn,$filterValue,\PDO::PARAM_INT);
 
-			$this->RequestExecute($modify);
+			$this->requestExecute($modify);
 
 			return $modify;
 		}
 
-		protected function RequestExecute($SQLRequest)
+		protected function requestExecute($SQLRequest)
 		{			
-			$RequestExecute = $SQLRequest->execute();
+			$requestExecute = $SQLRequest->execute();
 		}
 	}
 ?>

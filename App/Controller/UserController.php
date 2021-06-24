@@ -30,7 +30,7 @@
             
             $getUserInfo = $this->userModel->getUserInfo(); 
              
-            parent::Render('App/View/index.php',array('user'=>$getUserInfo));  
+            parent::Render('App/View/IndexView.php',array('user'=>$getUserInfo));  
         } 
     }   
 ?>

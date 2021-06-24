@@ -18,7 +18,7 @@ body{
 .inputBox{
 	position: relative;
 	box-sizing: border-box;
-	margin-bottom: 50px;
+	margin-bottom: 50px; 
 }
 .inputBox .inputText{
 	position: relative !important;

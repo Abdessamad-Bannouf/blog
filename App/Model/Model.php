@@ -29,11 +29,11 @@
 			$columns = implode(",", $ColumnsNames);
 
 			if($filterValues)
-				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
+				$sql = "SELECT ".$columns." FROM ".$Table." WHERE $filterValues";
 
 
 				else
-					$Sql = "SELECT ".$columns." FROM ".$Table."";
+					$sql = "SELECT ".$columns." FROM ".$Table."";
 			
 			$filter = $this->dbConnect()->query($Sql);
 
@@ -42,18 +42,18 @@
 
 		protected function selectAll($columnsNames = array(),$table)
 		{
-			$Sql = "SELECT".$columnsNames."FROM".$table;
-			$All = $this->dbConnect($Sql);
+			$sql = "SELECT".$columnsNames."FROM".$table;
+			$all = $this->dbConnect($sql);
 
-			return $All;
+			return $all;
 		}
 
 		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
-			$Sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
-			$Join = $this->dbConnect($Sql);
+			$sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
+			$join = $this->dbConnect($sql);
 			
-			return $Join; 
+			return $join; 
 		}
 
 		protected function requestInsert($table,$columnsNames = array(),$columnsValues = array())
@@ -63,9 +63,9 @@
 			$values .= implode("','", $columnsValues);
 			$values .= "'";
 
-			$Sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES('.$values.')';
+			$sql = 'INSERT INTO '.$table.' ('.$columns.') VALUES('.$values.')';
 
-			$add = $this->dbConnect()->prepare($Sql);
+			$add = $this->dbConnect()->prepare($sql);
 
 			for($i=0;$i<count($columnsNames);$i++)
 			{
@@ -80,9 +80,9 @@
 		protected function requestDelete($table,$columnName,$columnValue) 
 		{
 
-			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'= :'.$columnName.'';
+			$sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'= :'.$columnName.'';
 
-			$delete = $this->dbConnect()->prepare($Sql);
+			$delete = $this->dbConnect()->prepare($sql);
 			$delete->bindValue(':'.$columnName,$columnValue,\PDO::PARAM_INT);
 
 			$this->RequestExecute($delete);
@@ -104,9 +104,9 @@
 				$setValuesNames = $setValuesNames.$columnsNames[$i].' = :'.$columnsNames[$i].', ';
 			}
 
-			$Sql = 'UPDATE '.$table.' SET '.$setValuesNames.' WHERE '.$filterColumn.' = :'.$filterColumn.'';		
+			$sql = 'UPDATE '.$table.' SET '.$setValuesNames.' WHERE '.$filterColumn.' = :'.$filterColumn.'';		
 
-			$modify = $this->dbConnect()->prepare($Sql);
+			$modify = $this->dbConnect()->prepare($sql);
 
 			for($i=0;$i<count($columnsNames);$i++)
 			{

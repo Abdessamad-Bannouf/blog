@@ -43,7 +43,7 @@
                 $passwordVerified = $this->security->decryptPassword($password,$getUserInfo[0]['password']);
 
                 if($passwordVerified){
-                    $this->session = new Session(array("lastName","firstName","mail","isAdmin","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0]['isAdmin'],$getUserInfo[0][5]));
+                    $this->session = new Session(array("lastName","firstName","mail","isAdmin","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0]['isAdmin'],$getUserInfo[0]['user_id']));
                     $this->session->GetSession();
                 
                     if($getUserInfo[0]['isAdmin'])

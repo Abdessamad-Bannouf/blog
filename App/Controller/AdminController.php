@@ -41,9 +41,12 @@
             if($id != false){
                 $getIdPost = $this->adminModel->updatePost($id);
                 $getIdPost = $getIdPost->fetch(); 
+
+                $this->session = new Session(array('idPost'), array($getIdPost));
+                $this->session->GetSession();
             }
 
-            if($id != false AND isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+            if(isset($_SESSION['idPost']) AND isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
 
                 $idPost = $getIdPost['post_id'];
 

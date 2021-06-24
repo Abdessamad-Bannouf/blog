@@ -50,7 +50,7 @@
 			}
 		}
 
-		protected function render($file, $Data = array()){ // Prend en paramètre le fichier (View), et l'arraye contenant les données
+		protected function render($file, $data = array()){ // Prend en paramètre le fichier (View), et l'arraye contenant les données
 			require $file; // Requiet le fichier View concernée
 		} 
 	}

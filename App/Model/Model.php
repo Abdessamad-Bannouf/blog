@@ -3,17 +3,17 @@
 
 	class Model
 	{
-		private $Host;
-		private $DBName;
-		private $UserName;
-		private $Password;
-		protected $MyConnexion;
+		private $host;
+		private $dbName;
+		private $userName;
+		private $password;
+		protected $myConnexion;
 
 		protected function dbConnect()
 	    {
 			try
 			{
-				$this->MyConnexion = new \PDO("mysql:host=".Host.";dbname=".DBName.";charset=utf8",UserName,Password);
+				$this->myConnexion = new \PDO("mysql:host=".Host.";dbname=".DBName.";charset=utf8",UserName,Password);
 			}
 
 			catch(\PDOException $e)
@@ -21,42 +21,42 @@
 				echo 'erreur de connexion à la base'.$e->getMessage();
 			}
 
-			return $this->MyConnexion;
+			return $this->myConnexion;
 		}
 
-		protected function SelectFilter($ColumnsNames = array(),$Table,$filterValues = false)
+		protected function selectFilter($ColumnsNames = array(),$Table,$filterValues = false)
 		{
 			$columns = implode(",", $ColumnsNames);
 
 			if($filterValues)
-				$Sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
+				$sql = "SELECT ".$columns." FROM ".$Table." WHERE '$filterValues'";
 
 				else
-					$Sql = "SELECT ".$columns." FROM ".$Table."";
+					$sql = "SELECT ".$columns." FROM ".$Table."";
 			
-			$filter = $this->dbConnect()->query($Sql);
+			$filter = $this->dbConnect()->query($sql);
 
 
 			return $filter;
 		}
 
-		protected function SelectAll($columnsNames = array(),$table)
+		protected function selectAll($columnsNames = array(),$table)
 		{
-			$Sql = "SELECT".$columnsNames."FROM".$table;
-			$All = $this->dbConnect($Sql);
+			$sql = "SELECT".$columnsNames."FROM".$table;
+			$all = $this->dbConnect($sql);
 
-			return $All;
+			return $all;
 		}
 
-		protected function Join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
+		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
-			$Sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
-			$Join = $this->dbConnect($Sql);
+			$sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
+			$join = $this->dbConnect($sql);
 			
-			return $Join; 
+			return $join; 
 		}
 
-		protected function RequestInsert($table,$columnsNames = array(),$columnsValues = array())
+		protected function requestInsert($table,$columnsNames = array(),$columnsValues = array())
 		{			
 			$values = "'";
 			$columns = implode(",", $columnsNames);
@@ -76,47 +76,51 @@
 				
 			}
 			
-			$this->RequestExecute($add);
+			$this->requestExecute($add);
 			
 			return true;
 		}
 
-		protected function RequestDelete($table,$columnName,$columnValue) 
+		protected function requestDelete($table,$columnName,$columnValue) 
 		{
 
-			$Sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'=:'.$columnName.'';
+			$sql = 'DELETE FROM '.$table.' WHERE '.$columnName.'=:'.$columnName.'';
 
-			$Delete = $this->dbConnect()->prepare($Sql);
-			$Delete->bindValue($columnName,$columnValue,\PDO::PARAM_INT);
+			$delete = $this->dbConnect()->prepare($sql);
+			$delete->bindValue($columnName,$columnValue,\PDO::PARAM_INT);
 
-			return $Delete;		
+			$this->requestExecute($delete);
+
+			return $delete;		
 		}
 
-		protected function RequestModify($table,$columnsNames = array(),$columnsValues = array(),$datasModify = array())
+		protected function requestModify($table,$columnsNames = array(),$columnsValues = array(),$datasModify = array())
 		{
 			for($i=0;$i<count($columnsNames);$i++)
 			{
-				$Sql = 'UPDATE '.$table.' SET '.$columnsNames[$i].'="'.$datasModify[$i].'" WHERE '.$columnsNames[0].'="'.$datasModify[0].'"';
-				$Modify[$i] = $this->dbConnect()->prepare($Sql);
-				$Modify[$i]->bindValue($columnsNames[$i],$columnsValues[$i],\PDO::PARAM_INT);
+				$qql = 'UPDATE '.$table.' SET '.$columnsNames[$i].'="'.$datasModify[$i].'" WHERE '.$columnsNames[0].'="'.$datasModify[0].'"';
+				$modify[$i] = $this->dbConnect()->prepare($qql);
+				$modify[$i]->bindValue($columnsNames[$i],$columnsValues[$i],\PDO::PARAM_INT);
 			}
 
-			return $Modify;
+			$this->requestExecute($modify);
+
+			return $modify;
 		}
 
-		protected function RequestExecute($SQLRequest)
+		protected function requestExecute($SQLRequest)
 		{	
 			/* POUR LA REQUEST MODIFY */
 			if(is_array($SQLRequest))
 			{
 				for($i=0;$i<count($SQLRequest);$i++)
 				{ 
-					$RequestExecute = $SQLRequest[$i]->execute();
+					$requestExecute = $SQLRequest[$i]->execute();
 				}
 			}
 
 				else
-					$RequestExecute = $SQLRequest->execute();
+					$requestExecute = $SQLRequest->execute();
 		}
 	}
 ?>

@@ -54,7 +54,7 @@
                 }
             }
 
-            parent::Render('App/View/loginView.php',array());
+            parent::Render('App/View/LoginView.php',array());
         } 
 
         public function register(){
@@ -74,7 +74,7 @@
                 }
             }
 
-            parent::Render('App/View/registerView.php',array('isRegister'=>$isRegister,
+            parent::Render('App/View/RegisterView.php',array('isRegister'=>$isRegister,
                                                              'confirmPassword'=>$confirmPassword
                                                             ));
         }   
@@ -82,7 +82,7 @@
         public function home(){ 
             $getUserInfo = $this->userModel->getUserInfo($_SESSION['mail']);
 
-            parent::Render('App/View/index.php',array('user'=>$getUserInfo));  
+            parent::Render('App/View/IndexView.php',array('user'=>$getUserInfo));  
         }    
 
         public function sendMail(){
@@ -110,7 +110,7 @@
             }
         }
         public function admin(){    
-            parent::Render('App/View/adminView.php',array());
+            parent::Render('App/View/AdminView.php',array());
         }
 
         public function update(){

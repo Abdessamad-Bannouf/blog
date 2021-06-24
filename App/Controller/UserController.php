@@ -40,11 +40,11 @@
                     header('location: '. WebSiteLink.'User/admin');
             }
 
-            parent::Render('App/View/loginView.php',array());
+            parent::Render('App/View/LoginView.php',array());
         } 
 
         public function admin($action = false){    
-            parent::Render('App/View/adminView.php',array());
+            parent::Render('App/View/AdminView.php',array());
         }
 
         public function Update(){

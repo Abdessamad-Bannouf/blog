@@ -3,33 +3,33 @@
 
     class Validate 
     {
-        private $Passed;
-        private $Errors;
-        private $Db;
+        private $passed;
+        private $rrrors;
+        private $db;
 
-        public function Check ($Source, $Items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
+        public function Check ($source, $items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
         {
-            foreach($Items as $Item => $Rules) // Parcourt le tableau (2 dim) pour avoir le nom de chaque array qui représente 1 input chacun
+            foreach($items as $item => $rules) // Parcourt le tableau (2 dim) pour avoir le nom de chaque array qui représente 1 input chacun
             {
-                foreach($Rules as $Rule => $RuleValue) // Parcourt le tableau pour avoir la valeur de chaque input
+                foreach($rules as $rule => $ruleValue) // Parcourt le tableau pour avoir la valeur de chaque input
                 {              
-                    $Value = $Source[$Item]; // Stocke la valeur dans $Value    $Source[$item] = $_POST[$item];
+                    $value = $source[$item]; // Stocke la valeur dans $Value    $Source[$item] = $_POST[$item];
 
-                    if($Rule === 'Required' AND empty($Value)) // Si l'attribut est égal à Required et que l'input est vide, alors il renvoie une erreur 
-                        $this->AddError("{$Item} is required");
+                    if($rule === 'Required' AND empty($value)) // Si l'attribut est égal à Required et que l'input est vide, alors il renvoie une erreur 
+                        $this->AddError("{$item} is required");
 
-                        else if(!empty($Rule)) // Sinon si l'attribut n'est pas vide
+                        else if(!empty($rule)) // Sinon si l'attribut n'est pas vide
                         {   
-                            switch($Rule) // Dans le cas où l'attribut 
+                            switch($rule) // Dans le cas où l'attribut 
                             {
                                 case 'Min': 
-                                    if(strlen($Value) < $RuleValue) // Si la valeur de l'input possède une valeur inférieure à celle proscrite dans la valeur 'Min' de l'array
-                                        $this->AddError("{$Item} devrait être de {$RuleValue} caractères minimums"); // Ajoute une erreur
+                                    if(strlen($value) < $ruleValue) // Si la valeur de l'input possède une valeur inférieure à celle proscrite dans la valeur 'Min' de l'array
+                                        $this->AddError("{$item} devrait être de {$ruleValue} caractères minimums"); // Ajoute une erreur
                                 break;
 
                                 case 'Max':
-                                    if(strlen($Value) > $RuleValue) // Si la valeur de l'input possède une valeur supérieure à celle proscrite dans la valeur 'Min' de l'array
-                                        $this->AddError("{$Item} devrait être de {$RuleValue} caractères minimums"); // Ajoute une erreur
+                                    if(strlen($value) > $ruleValue) // Si la valeur de l'input possède une valeur supérieure à celle proscrite dans la valeur 'Min' de l'array
+                                        $this->AddError("{$item} devrait être de {$ruleValue} caractères minimums"); // Ajoute une erreur
                                 break;
 
                                 case 'Unique':
@@ -40,25 +40,25 @@
 
                 }
             }
-                if(empty($this->Errors)) // SI il n'y a pas d'erreur, $this->Passed == true
-                    $this->Passed = true;
+                if(empty($this->errors)) // SI il n'y a pas d'erreur, $this->Passed == true
+                    $this->passed = true;
 
             return $this;          
         }
 
-        private function AddError($Errors) // Ajoute une erreur dans le tableau $this-Errors
+        private function addError($errors) // Ajoute une erreur dans le tableau $this-Errors
         {
-            $this->Errors[] = $Errors;
+            $this->errors[] = $errors;
         }
 
-        public function Errors() // Retourne les erreurs
+        public function errors() // Retourne les erreurs
         {
-            return $this->Errors;
+            return $this->errors;
         }
 
-        public function Passed() // Retourne l'attribut $Passed si le formulaire est bien passé
+        public function passed() // Retourne l'attribut $Passed si le formulaire est bien passé
         {
-            return $this->Passed;
+            return $this->passed;
         }
     }
 ?>

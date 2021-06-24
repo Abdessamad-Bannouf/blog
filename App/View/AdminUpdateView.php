@@ -4,7 +4,10 @@
         <title>Admin</title>
         <meta charset="UTF-8"/>
         <!-- Bootstrap Core CSS -->
-
+        <link href="../../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../App/Public/template/css/post.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../../App/Public/css/post.css" />
+        <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -70,5 +73,7 @@
             $(this).parent().addClass("focus");
         })   
         });
+
+        document.getElementsByTagName("form")[0].style.display = "block";
     </script>
 </html>

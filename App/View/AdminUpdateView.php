@@ -7,7 +7,6 @@
         <link href="../../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../../App/Public/template/css/post.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../../App/Public/css/post.css" />
-        <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -25,14 +24,26 @@
                             <div class="col-sm-6">
                                 <div class="inputBox ">
                                     <div class="inputText">Titre</div>
-                                    <input type="text" name="title" class="input">
+                                    <?php if(isset($data['post']['post_id'])){ ?>
+                                        <input type="text" name="title" class="input" value="<?= $data['post']['title']; ?>">
+                                    <?php } 
+
+                                     else{ ?>
+                                        <input type="text" name="title" class="input">
+                                    <?php } ?>
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="inputBox">
                                     <div class="inputText">Chapô</div>
-                                    <input type="text" name="chapo" class="input">
+                                    <?php if(isset($data['post']['post_id'])){ ?>
+                                        <input type="text" name="chapo" class="input" value="<?= $data['post']['chapo']; ?>">
+                                    <?php }
+                                    
+                                    else{ ?>
+                                        <input type="text" name="chapo" class="input">
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +76,7 @@
             </form>
         </div>
     </body>
-
+    <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function(){
 
@@ -76,4 +87,5 @@
 
         document.getElementsByTagName("form")[0].style.display = "block";
     </script>
+    
 </html>

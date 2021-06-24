@@ -21,7 +21,7 @@ body{
 	margin-bottom: 50px;
 }
 .inputBox .inputText{
-	position: absolute;
+	position: relative !important;
     font-size: 24px;
     line-height: 50px;
     transition: .5s;

@@ -77,7 +77,7 @@
         </div>
 
         <?php 
-            while($donnees = $Data['post']->fetch()):
+            while($donnees = $data['post']->fetch()):
         ?>
 
                 <div class="col-md-10 blogShort">

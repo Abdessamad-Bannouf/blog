@@ -4,10 +4,11 @@
     class Validate 
     {
         private $passed;
-        private $rrrors;
+
+        private $errors;
         private $db;
 
-        public function Check ($source, $items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
+        public function check($source, $items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
         {
             foreach($items as $item => $rules) // Parcourt le tableau (2 dim) pour avoir le nom de chaque array qui représente 1 input chacun
             {

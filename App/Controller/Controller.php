@@ -34,8 +34,7 @@
 					$concernController->$controllerMethod(); // Appelle la méthode concerné
 				}
 
-					else if(method_exists($objet, $this->methodName) AND !empty($this->argumentName)){ // Vérifie si la méthode existe et si il y a un argument
-						
+					else if(method_exists($objet, $this->methodName) AND !empty($this->argumentName)){ // Vérifie si la méthode existe et si il y a un argument	
 						$controllerName = 'App\Controller\\'.$this->controllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 						$concernController = new $controllerName($this->controllerName, $this->methodName, $this->argumentName); // Instancie le controller concerné
 

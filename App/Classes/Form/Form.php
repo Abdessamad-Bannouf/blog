@@ -3,7 +3,7 @@
     
     class Form
     {
-        public static function exists($type = 'post') // Vérifie si une requête de type post ou get existe et retourne true si celle-ci existe, sinon elle retourne false
+        public static function Exists($type = 'post') // Vérifie si une requête de type post ou get existe et retourne true si celle-ci existe, sinon elle retourne false
         {   
             switch($type)
             {

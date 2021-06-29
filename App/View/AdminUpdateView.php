@@ -54,6 +54,7 @@
                                     <div class="inputText">Image</div>
                                     <?php if(isset($data['post']['image'])){ ?>
                                         <input type="file" name="image" class="input" value="C:\wamp64\www\Blog\App\Public\img\image_deux.jpg">
+                                        <img src="../../App/Public/img/<?= $data['post']['image']; ?>" />
                                     <?php }
 
                                     else{ ?>

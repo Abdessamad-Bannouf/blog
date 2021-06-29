@@ -18,8 +18,8 @@
 
         <div class="card bg-light">
             <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <p class="text-center">Get started with your free account</p>
+                <h4 class="card-title mt-3 text-center">Se connecter</h4>
+                <p class="text-center">Commencez avec un compte gratuit</p>
                 <p>
 
                     <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
@@ -42,9 +42,10 @@
                         <input name="password" class="form-control" placeholder="Create password" type="password">
                     </div> <!-- form-group// -->
     
-                        <button name="confirmPassword" type="submit" class="btn btn-primary btn-block"> Create Account  </button>
+                        <button name="confirmPassword" type="submit" class="btn btn-primary btn-block"> Se connecter  </button>
                         
-                    <p class="text-center">Have an account? <a href="">Log In</a> </p>                                                                 
+                    <p class="text-center">Vous n'avez pas de compte ? <a href="<?= WebSiteLink ?>User/register
+                    ">S'inscrire</a> </p>                                                                 
                 </form>
             </article>
         </div> <!-- card.// -->

@@ -54,7 +54,7 @@
                 }
             }
 
-            parent::Render('App/View/loginView.php',array());
+            parent::Render('App/View/LoginView.php',array());
         } 
 
         public function register(){
@@ -111,7 +111,7 @@
         }
         
         public function admin(){    
-            parent::Render('App/View/adminView.php',array());
+            parent::Render('App/View/AdminView.php',array());
         }
 
         public function update(){

@@ -43,7 +43,7 @@
 		{
 			$sql = "SELECT ".$columnsNames." FROM ".$table;
 			$all = $this->dbConnect()->query($sql);
-
+      
 			return $all;
 		}
 

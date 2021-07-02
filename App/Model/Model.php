@@ -49,7 +49,7 @@
 
 		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
-			$sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$tableJoin."";
+			$sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
 			var_dump($sql);
 			$join = $this->dbConnect()->query($sql);
 			

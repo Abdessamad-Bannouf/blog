@@ -34,20 +34,35 @@
         } 
 
         public function index(){
-            if($this->admin){
-                $allPost = $this->commentaryModel->index();
+    
+            $allPost = $this->commentaryModel->index();
 
-                parent::Render('App/View/AdminView.php',array('post'=>$allPost));
-            }
+            parent::Render('App/View/AdminView.php',array('post'=>$allPost)); 
+        }
+
+        public function show($id=false){
+
+            if($id)
+                $commentary = $this->commentaryModel->getCommentary($id);   
+
+                    else
+                        $commentary = $this->commentaryModel->getCommentary(); 
+            
+            parent::Render('App/View/CommentaryView.php',array('commentary'=>$commentary)); 
+
         }
 
         public function add(){
-            if(isset($_POST['content'])){ 
-                $content = htmlspecialchars($_POST['content']);
+            if($this->isAdmin){
+                $userId = $_SESSION['user_id'];
+                $postId = $_POST['post_id'];
+                if(isset($_POST['commentary'])){ 
+                    $content = htmlspecialchars($_POST['commentary']);
 
-                $this->adminModel->addPost($content, $this->date);
+                    $this->commentaryModel->addCommentary($content,$this->date,$userId,$postId,0);
 
-                header('location: '.WebSiteLink.'post/post');
+                    header('location: '.WebSiteLink.'post/post');
+                }
             }
         }
 

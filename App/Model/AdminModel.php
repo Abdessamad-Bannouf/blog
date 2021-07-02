@@ -4,10 +4,11 @@
 
     class AdminModel extends Model{
         public function index(){
-            $allPost = parent::SelectAll('*','post');
+            $join = parent::join('commentary','c','post','p','post_id','post_id');
             
-            return $allPost;
+            return $join;
         }
+        
 
         public function addPost($title,$chapo,$image,$content,$author,$date){
             $addPost = parent::RequestInsert('post',array('title','chapo','image','content','author','date'),array($title,$chapo,$image,$content,$author,$date));

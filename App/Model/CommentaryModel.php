@@ -8,11 +8,24 @@
             
             return $allCommentary;
         }
+        
+        public function getCommentary($id = false){
+            if($id != false)
+                $getCommentary = parent::selectFilter(array('commentary_id','content','date','user_id','post_id','is_valid'),'commentary','post_id="'.$id.'"');
+                
+                else
+                    $getCommentary = parent::selectAll(array('commentary_id','content','date','user_id','post_id','is_valid'),'commentary');
 
-        public function acceptCommentary($id){
-            $addCommentary = parent::requestModify('commentary',array('is_valid'),array($id),'commentary_id',$id);
+            return $getCommentary;
         }
 
+        public function addCommentary($content,$date,$userId,$postId,$isValid){
+            $addCommentary = parent::requestInsert('commentary',array('content','date','user_id','post_id','is_valid'),array($content,$date,$userId,$postId,$isValid));
+        }
+
+        public function acceptCommentary($id){
+            $acceptCommentary = parent::requestModify('commentary',array('is_valid'),array(1),'commentary_id',$id);
+        }
 
         public function refuseCommentary($id){
             $deleteCommentary = parent::RequestDelete('commentary','commentary_id',$id);

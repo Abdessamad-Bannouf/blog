@@ -41,16 +41,24 @@
 
 		protected function selectAll($columnsNames = array(),$table)
 		{
-			$sql = "SELECT ".$columnsNames." FROM ".$table;
+			$columns = implode(",", $columnsNames);
+			
+			if(empty($columnsNames))
+				$sql = "SELECT * FROM ".$table; 
+
+				else
+					$sql = "SELECT ".$columns." FROM ".$table; 
 			$all = $this->dbConnect()->query($sql);
       
 			return $all;
 		}
 
-		protected function join($table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
+		protected function join($columnsNames,$table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
 		{
-			$sql = "SELECT * FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
-			var_dump($sql);
+			$columnsName = implode(",", $columnsNames);
+
+			$sql = "SELECT $columnsName FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
+
 			$join = $this->dbConnect()->query($sql);
 			
 			return $join; 

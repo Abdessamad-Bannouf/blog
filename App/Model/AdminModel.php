@@ -4,23 +4,25 @@
 
     class AdminModel extends Model{
         public function index(){
-            $join = parent::join('commentary','c','post','p','post_id','post_id');
-            
-            return $join;
+            $allPost = parent::SelectAll(array(),'post');            
+
+            return $allPost;
         }
-        
 
         public function addPost($title,$chapo,$image,$content,$author,$date){
             $addPost = parent::RequestInsert('post',array('title','chapo','image','content','author','date'),array($title,$chapo,$image,$content,$author,$date));
         }
 
         public function updatePost($id=false,$title=false,$chapo=false,$image=false,$content=false,$author=false,$date=false){
-            if($title==false OR $chapo==false OR $image==false OR $content==false OR$author==false OR $date==false)
+            var_dump(array($title,$chapo,$image,$content,$author,$date));
+            var_dump($id);
+            if($id != false)
                 $updatePost = parent::SelectFilter(array('post_id','title','chapo','image','content','author','date'),'post','post_id='.$id.'');
                 
-                else
+                else{
                     $updatePost = parent::RequestModify('post',array('title','chapo','image','content','author','date'),array($title,$chapo,$image,$content,$author,$date),'post_id',$id);
-                         
+                     die(array($title,$chapo,$image,$content,$author,$date));
+                }
             return $updatePost;
         }
 

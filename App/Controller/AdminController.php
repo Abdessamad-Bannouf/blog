@@ -32,11 +32,12 @@
             (bool) $this->isAdmin = (isset($_SESSION['isAdmin'])) ? $_SESSION['isAdmin'] : false;
         } 
 
-        public function index(){    
+        public function index(){
             $allPost = $this->adminModel->index();
 
             parent::Render('App/View/AdminView.php',array('post'=>$allPost));
         }
+
 
          public function update($id=false){
             if($this->isAdmin){
@@ -51,11 +52,11 @@
                 }
 
                 if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-    
                     $title = htmlspecialchars($_POST['title']);
                     $chapo = htmlspecialchars($_POST['chapo']);
                     $image = htmlspecialchars($_FILES['image']['name']);
                     $content = htmlspecialchars($_POST['content']);
+                    
 
                     $author = $_SESSION['user_id'];
                     $idPost = $_SESSION['idPost'];

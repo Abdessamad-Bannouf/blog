@@ -61,7 +61,7 @@
 
                     $this->commentaryModel->addCommentary($content,$this->date,$userId,$postId,0);
 
-                    header('location: '.WebSiteLink.'post/post');
+                    header('location: '.WebSiteLink.'post/show');
                 }
             }
         }

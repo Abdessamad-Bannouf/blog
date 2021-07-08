@@ -22,7 +22,7 @@
 
 
         public function __construct(){
-            $this->commentaryModel = new commentaryModel;
+            $this->commentaryModel = new CommentaryModel;
 
             $this->form = new Form;
 

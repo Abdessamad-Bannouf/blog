@@ -24,6 +24,10 @@
 			return $this->myConnexion;
 		}
 
+		public function requestCustom($sql){
+			return $this->dbConnect()->query($sql);
+		}
+
 		protected function selectFilter($columnsNames = array(),$Table,$filterValues = false)
 		{
 			$columns = implode(",", $columnsNames);
@@ -57,7 +61,7 @@
 		{
 			$columnsName = implode(",", $columnsNames);
 
-			$sql = "SELECT $columnsName FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
+			$sql = "SELECT DISTINCT $columnsName FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
 
 			$join = $this->dbConnect()->query($sql);
 			

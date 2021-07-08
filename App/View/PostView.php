@@ -11,9 +11,28 @@
     <body>
         <div class="container">
             <div id="blog" class="row"> 
-                <?php while ($donnees = $data['post']->fetch()){ var_dump($data); ?>
+                        
+                <div class="col-sm-2 paddingTop20">
+                    <nav class="nav-sidebar">
+                        <ul class="nav">
+                            <li class="active"><a href="javascript:;"><span class="glyphicon glyphicon-star"></span> News</a></li>
+                            <li><a href="javascript:;">Latest news</a></li>
+                            <li><a href="javascript:;">Updates</a></li>
+                            <li><a href="javascript:;">Training</a></li>
+                            <li><a href="javascript:;">Nutrition</a></li>
+                            <li><a href="javascript:;">Proteins</a></li>
+                            <li><a href="javascript:;">Recipes</a></li>
+                            <li><a href="javascript:;">Challenge</a></li>
+                            <li class="nav-divider"></li>
+                            <li><a href="javascript:;"><i class="glyphicon glyphicon-off"></i> Sign in</a></li>
+                        </ul>
+                    </nav>
+                        <div><h2 class="add">Place for your add!</h2></div>
+                </div>
+
+                <?php while ($donnees = $Data['post']->fetch()){ ?>
                 <div class="col-md-10 blogShort">
-                    <h1><a href="<?=  WebSiteLink; ?>post/show/<?= $donnees['post_id'] ?>"><?= $donnees['title'] ?></a></h1>
+                    <h1><?= $donnees['title'] ?></h1>
                     <h3><?= $donnees['chapo'] ?></h3>
                     <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <article><p>
@@ -21,59 +40,11 @@
                     </p></article>
                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">Lire plus</a> 
                 </div>
-            </div>    
-
-            <!--<div class="container">
-                <div class="row">
-                    <div class="panel panel-default widget">
-                        <div class="panel-heading">
-                            <span class="glyphicon glyphicon-comment"></span>
-                            <h3 class="panel-title">
-                                Recent Comments</h3>
-                            <span class="label label-info">
-                                78</span>
-                        </div>
-                        <div class="panel-body">
-                            <ul class="list-group">
-                                <li class="list-group-item">
-                                    <div class="row">
-                                        <div class="col-xs-2 col-md-1">
-                                            <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                                        <div class="col-xs-10 col-md-11">
-                                            <div>
-                                                <div class="mic-info">
-                                                    By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                                </div>
-                                            </div>
-                                            <div class="comment-text">
-                                                <form method="post" action="<?= WebSiteLink; ?>commentary/add">
-                                                    <textarea name="commentary" rows="4" cols="150"></textarea>
-                                                    <input type="hidden" name="post_id" value="<//?= $donnees['post_id']; ?>"/>
-                                                    <input type="submit" name="send" />
-                                                </form>
-                                            </div>
-                                            <div class="action">
-                                                <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                                    <span class="glyphicon glyphicon-pencil"></span>
-                                                </button>
-                                                <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                                    <span class="glyphicon glyphicon-ok"></span>
-                                                </button>
-                                                <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                                    <span class="glyphicon glyphicon-trash"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>!-->
-                <?php  } ?>       
-            
+                <?php } ?>
+                        
+                        
+                    <div class="col-md-12 gap10"></div>
+            </div>
         </div>
     </body>
 </html>

@@ -11,9 +11,9 @@
     <body>
         <div class="container">
             <div id="blog" class="row"> 
-                <?php while ($donnees = $data['post']->fetch()){ ?>
+                <?php while ($donnees = $data['post']->fetch()){ var_dump($data); ?>
                 <div class="col-md-10 blogShort">
-                    <h1><?= $donnees['title'] ?></h1>
+                    <h1><a href="<?=  WebSiteLink; ?>post/show/<?= $donnees['post_id'] ?>"><?= $donnees['title'] ?></a></h1>
                     <h3><?= $donnees['chapo'] ?></h3>
                     <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <article><p>
@@ -23,7 +23,7 @@
                 </div>
             </div>    
 
-            <div class="container">
+            <!--<div class="container">
                 <div class="row">
                     <div class="panel panel-default widget">
                         <div class="panel-heading">
@@ -41,8 +41,6 @@
                                             <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
                                         <div class="col-xs-10 col-md-11">
                                             <div>
-                                                <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                                    Google Style Login Page Design Using Bootstrap</a>
                                                 <div class="mic-info">
                                                     By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
                                                 </div>
@@ -50,7 +48,7 @@
                                             <div class="comment-text">
                                                 <form method="post" action="<?= WebSiteLink; ?>commentary/add">
                                                     <textarea name="commentary" rows="4" cols="150"></textarea>
-                                                    <input type="hidden" name="post_id" value="<?= $donnees['post_id']; ?>"/>
+                                                    <input type="hidden" name="post_id" value="<//?= $donnees['post_id']; ?>"/>
                                                     <input type="submit" name="send" />
                                                 </form>
                                             </div>
@@ -73,8 +71,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-                <?php } ?>                     
+            </div>!-->
+                <?php  } ?>       
             
         </div>
     </body>

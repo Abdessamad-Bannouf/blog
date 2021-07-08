@@ -57,11 +57,11 @@
 			return $all;
 		}
 
-		protected function join($columnsNames,$table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin)
+		protected function join($columnsNames,$table,$alias1,$tableJoin,$aliasJoin,$id,$idJoin,$value)
 		{
 			$columnsName = implode(",", $columnsNames);
 
-			$sql = "SELECT DISTINCT $columnsName FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$aliasJoin.".".$idJoin."";
+			$sql = "SELECT DISTINCT $columnsName FROM ".$table." AS ".$alias1." JOIN ".$tableJoin." AS ".$aliasJoin." ON ".$alias1.".".$id."=".$aliasJoin.".".$idJoin. " WHERE ".$alias1.".".$id."=".$value."";
 
 			$join = $this->dbConnect()->query($sql);
 			

@@ -4,25 +4,21 @@
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <link rel="stylesheet" href="../App/Public/css/post.css" />
+        <link rel="stylesheet" href="../../App/Public/css/post.css" />
         <!------ Include the above in your HEAD tag ---------->
     </head>
 
     <body>
         <div class="container">
             <div id="blog" class="row"> 
-                <?php while ($donnees = $data['post']->fetch()){ ?>
+                <?php $i=0; while ($donnees = $data['post']->fetch()){if($i==0){ ?>
                 <div class="col-md-10 blogShort">
                     <h1><a href="<?=  WebSiteLink; ?>post/show/<?= $donnees['post_id'] ?>"><?= $donnees['title'] ?></a></h1>
                     <h3><?= $donnees['chapo'] ?></h3>
-                    <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
-                    <article><p>
-                         <?= $donnees['content'] ?>  
-                    </p></article>
+                    <img src="../../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">Lire plus</a> 
                 </div>
             </div>    
-
             <div class="container">
                 <div class="row">
                     <div class="panel panel-default widget">
@@ -65,7 +61,16 @@
                     </div>
                 </div>
             </div>
-                <?php  } ?>       
+                <?php  $i++; } ?>
+            
+            <article><p>
+                         <?php if($donnees['is_valid']){
+                            echo $donnees['firstname'].' : '.$donnees['content'];
+                         } 
+                         
+                         ?>  
+                    </p></article>
+           <?php } ?>       
             
         </div>
     </body>

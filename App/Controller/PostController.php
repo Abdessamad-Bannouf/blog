@@ -17,10 +17,16 @@ class PostController extends Controller{
             $this->form = new Form;
         } 
 
-        public function post($id = false){
-            $post = $this->userModel->getPost();
+        public function show($id=false){
+            if($id){
+                $post = $this->userModel->getPost($id);  
+                parent::Render('App/View/SinglePostView.php',array('post'=>$post)); 
+            } 
 
-            parent::Render('App/View/PostView.php',array('post'=>$post));
+                    else{
+                        $post = $this->userModel->getPost(); 
+                        parent::Render('App/View/PostView.php',array('post'=>$post)); 
+                    }
         }
     } 
 ?>

@@ -91,7 +91,7 @@
         ?>
 
                 <div class="col-md-10 blogShort">
-                    <a href="<?= WebSiteLink; ?>commentary/show/<?= $donnees['post_id'] ?>"><h1><?= $donnees['title'] ?></h1></a>
+                    <a href="<?= WebSiteLink; ?>post/show/<?= $donnees['post_id'] ?>"><h1><?= $donnees['title'] ?></h1></a>
                     <h3><?= $donnees['chapo'] ?></h3>
                     <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <article>

@@ -41,3 +41,9 @@ body {
 .widget .btn-block {
     border-top-left-radius:0px;border-top-right-radius:0px; 
 }
+
+table{
+    margin-left: 30%;
+    border: 2px solid black;
+    background-color: red;
+}

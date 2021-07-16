@@ -17,7 +17,7 @@
     </head>
 
     <body>
-
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="admin-button">
             <a id="link">
                 <button class="btn btn-success" onclick="add()">

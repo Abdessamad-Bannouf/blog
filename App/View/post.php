@@ -30,7 +30,7 @@
                         <div><h2 class="add">Place for your add!</h2></div>
                 </div>
 
-                <?php while ($donnees = $Data['post']->fetch()){ ?>
+                <?php while ($donnees = $data['post']->fetch()){ ?>
                 <div class="col-md-10 blogShort">
                     <h1><?= $donnees['title'] ?></h1>
                     <h3><?= $donnees['chapo'] ?></h3>

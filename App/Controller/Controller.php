@@ -19,7 +19,7 @@
 				$this->argumentName = $url[2];			
 		}
 
-		public function SearchController(){ // Cherche le controller
+		public function searchController(){ // Cherche le controller
  
 			$controllerPath = 'App\Controller\\'.$this->controllerName.'Controller.php'; // Enregistre le nom du controller dans $ControllerPath
 
@@ -50,7 +50,7 @@
 			}
 		}
 
-		protected function render($file, $Data = array()){ // Prend en paramètre le fichier (View), et l'arraye contenant les données
+		protected function render($file, $data = array()){ // Prend en paramètre le fichier (View), et l'arraye contenant les données
 			require $file; // Requiet le fichier View concernée
 		} 
 	}

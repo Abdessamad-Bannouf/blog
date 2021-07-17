@@ -7,7 +7,7 @@
         private $errors;
         private $dB;
 
-        public function Check ($source, $items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
+        public function check($source, $items = array()) // Prend en paramètre le form, et l'array contenant les vérification comme le min/max/require
         {
             foreach($items as $item => $rules) // Parcourt le tableau (2 dim) pour avoir le nom de chaque array qui représente 1 input chacun
             {
@@ -53,12 +53,12 @@
 
         public function Errors() // Retourne les erreurs
         {
-            return $this->Errors;
+            return $this->errors;
         }
 
-        public function Passed() // Retourne l'attribut $Passed si le formulaire est bien passé
+        public function passed() // Retourne l'attribut $Passed si le formulaire est bien passé
         {
-            return $this->Passed;
+            return $this->passed;
         }
     }
 ?>

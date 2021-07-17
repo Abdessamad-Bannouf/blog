@@ -104,18 +104,8 @@
 		}
 
 		protected function requestExecute($SQLRequest)
-		{	
-			/* POUR LA REQUEST MODIFY */
-			if(is_array($SQLRequest))
-			{
-				for($i=0;$i<count($SQLRequest);$i++)
-				{ 
-					$RequestExecute = $SQLRequest[$i]->execute();
-				}
-			}
-
-				else
-					$requestExecute = $SQLRequest->execute();
+		{			
+			$RequestExecute = $SQLRequest->execute();
 		}
 	}
 ?>

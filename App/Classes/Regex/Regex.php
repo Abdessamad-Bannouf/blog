@@ -3,9 +3,9 @@
 
     class Regex
     {
-        private $VerifMail;
-        private $VerifPassword;
-        private $VerifFirstName;
+        private $verifMail;
+        private $verifPassword;
+        private $verifFirstName;
 
         public function __construct($Inputs = array()) // Tableau associatif qui va contenir les différents inputs d'un form
         {
@@ -14,7 +14,7 @@
 			$this->VerifName = '/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,12}$/';
         }
 
-        public function VerifMail($mail)
+        public function verifMail($mail)
         {
             if(isset($_POST['mail']))
                 $mail = htmlspecialchars($mail);
@@ -22,7 +22,7 @@
             return preg_match($this->VerifMail,$mail);
         }
 
-        public function VerifPassword($password)
+        public function verifPassword($password)
         {
             if(isset($password))
                 $password = htmlspecialchars($password);
@@ -30,7 +30,7 @@
             return preg_match($this->VerifPassword,$password);
         }
 
-        public function VerifFirstName($firstName)
+        public function verifFirstName($firstName)
         {
             if(isset($firstName))
                 $firstName = htmlspecialchars($firstName);
@@ -38,7 +38,7 @@
             return preg_match($this->VerifFirstName,$firstName);
         }
 
-        public function VerifLastName($lastName)
+        public function verifLastName($lastName)
         {
             if(isset($lastName))
                 $lastName = htmlspecialchars($lastName);

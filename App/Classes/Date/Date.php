@@ -3,21 +3,13 @@
 
     class Date
     {
-        public static function GetDate() // Crée et retourne la date au formation AAAA-MM-JJ H:M:S
+        public static function getDate() // Crée et retourne la date au formation AAAA-MM-JJ H:M:S
         {
-            $Date = getdate();
+            date_default_timezone_set('Europe/Paris');
 
-            $RealHours = $Date['hours']+1;
-            $RealSeconds = $Date['seconds'];
-            if($RealSeconds >= 0 AND $RealSeconds <= 10)
-                $RealSeconds = '0'.$RealSeconds;
+            $date = date('Y-m-d H:i:s');
 
-            $Date = $Date['year'].'-'.$Date['mon'].'-'.$Date['mday'].' '.$RealHours.':'.$Date['minutes'].':'.$RealSeconds; 
-            $Date = \DateTime::createFromFormat('Y-m-d H:i:s',$Date);  
-            $Date = $Date->format('Y-m-d H:i:s');var_dump($Date);
-
-
-            return $Date;
+            return $date;
         }
     }
 ?>

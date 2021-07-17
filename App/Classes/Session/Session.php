@@ -11,13 +11,13 @@
             $this->value = $value;
         }
 
-        public function GetSession(){ // Crée la ou les session(s)
+        public function getSession(){ // Crée la ou les session(s)
             for($i=0; $i<count($this->name); $i++){
                 $_SESSION[$this->name[$i]] = $this->value[$i];
             }     
         }
 
-        public function DeleteSession(){ // Détruit la ou les session(s)
+        public function deleteSession(){ // Détruit la ou les session(s)
             unset($this->session);
         }
     }

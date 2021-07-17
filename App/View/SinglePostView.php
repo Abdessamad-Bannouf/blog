@@ -37,7 +37,7 @@
                                             </div>
                                             <div class="comment-text">
                                                 <form method="post" action="<?= WebSiteLink; ?>commentary/add">
-                                                    <textarea name="commentary" rows="4" cols="150"></textarea>
+                                                    <textarea name="commentary" rows="4" cols="130"></textarea>
                                                     <input type="hidden" name="post_id" value="<?= $donnees['post_id']; ?>"/>
                                                     <input type="submit" name="send" />
                                                 </form>

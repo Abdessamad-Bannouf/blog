@@ -14,8 +14,6 @@
         }
 
         public function updatePost($id=false,$title=false,$chapo=false,$image=false,$content=false,$author=false,$date=false){
-            var_dump(array($title,$chapo,$image,$content,$author,$date));
-            var_dump($id);
             if($id != false)
                 $updatePost = parent::SelectFilter(array('post_id','title','chapo','image','content','author','date'),'post','post_id='.$id.'');
                 

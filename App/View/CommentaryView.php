@@ -9,7 +9,7 @@
     </head>
 
     <body>
-    <?php require 'App/View/NavBar.php'; ?>
+        <?php require 'App/View/NavBar.php'; ?>
         <table>
             <?php while ($donnees = $data['commentary']->fetch()){ 
                 if(isset($donnees['content'])){ ?>
@@ -36,5 +36,6 @@
                     <?php } ?>
             <?php }} ?>
         </table>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>

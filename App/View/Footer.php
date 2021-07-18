@@ -3,6 +3,14 @@
     <head>
         <meta charset="utf-8"/>
         <link href="../App/Public/template/css/footer.css" rel="stylesheet" type="text/css">
+
+        <!-- Theme CSS -->
+        <link href="../App/Public/template/css/freelancer.css" rel="stylesheet">
+
+        <!-- Custom Fonts -->
+        <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -46,6 +54,9 @@
             <div class="footer-below">
                 <div class="container">
                     <div class="row">
+                        <?php if(isset($_SESSION['isAdmin'])){ ?>
+                            <a href="<?= WebSiteLink;?>admin/index">Administration</a>
+                        <?php } ?>
                         <div class="col-lg-12">
                             Copyright &copy; Blog 2021
                         </div>

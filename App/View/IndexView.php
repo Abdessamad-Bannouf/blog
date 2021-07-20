@@ -59,6 +59,19 @@
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
+                    <?php
+                    if(isset($_SESSION['firstName'])){ ?>
+                        <li class="page-scroll">
+                        <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                        </li>
+                <?php }
+                        else{ ?>
+                            <li class="page-scroll">
+                                <a href="<?= WebSiteLink; ?>user/login">connexion</a>
+                            </li>
+                        
+                        <?php }
+                ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -68,15 +81,13 @@
 
     <!-- Header -->
     <header>
-<?php 
-    while($donnees = $data['user']->fetch()){ 
-?>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
+                        <span class="name">BANNOUF Abdessamad</span>
                         <hr class="star-light">
                         <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
                         <span class="skills">Développeur web</span> 
@@ -92,9 +103,7 @@
                 </div>
             </div>
         </div>
-<?php 
-    } 
-?>
+
     </header>
 
     <!-- Portfolio Grid Section -->
@@ -291,6 +300,9 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
+                    <?php if(isset($_SESSION['isAdmin'])){ ?>
+                        <a href="<?= WebSiteLink;?>admin/index">Administration</a>
+                    <?php } ?>
                     <div class="col-lg-12">
                         Copyright &copy; Blog 2021
                     </div>

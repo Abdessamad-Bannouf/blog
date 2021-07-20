@@ -22,12 +22,9 @@
                                     <input type="email" name="mail" id="email" class="form-control input-sm" placeholder="Email Address">
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
-                                        </div>
-                                    </div>
+                                <div class="form-group">
+                                    <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+    
                                 </div>
                                 
                                 <input type="submit" value="Register" class="btn btn-info btn-block">

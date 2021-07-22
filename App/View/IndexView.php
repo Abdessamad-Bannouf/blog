@@ -1,23 +1,3 @@
-<?php
-   // Check for empty fields
-    if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['phone']) AND !empty($_POST['message']) AND !filter_var($_POST['email'],FILTER_VALIDATE_EMAIL))
-    {
-        $name = strip_tags(htmlspecialchars($_POST['name']));
-        $email_address = strip_tags(htmlspecialchars($_POST['email']));
-        $phone = strip_tags(htmlspecialchars($_POST['phone']));
-        $message = strip_tags(htmlspecialchars($_POST['message']));
-            
-        // Create the email and send the message
-        $to = 'abdessamad.bannouf@laposte.net'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-        $email_subject = "Website Contact Form:  $name";
-        $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
-        $headers = "From: noreply@yourdomain.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-        $headers .= "Reply-To: $email_address";	
-        mail($to,$email_subject,$email_body,$headers);
-        return true;	
-    }		
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -79,6 +59,19 @@
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
+                    <?php
+                    if(isset($_SESSION['firstName'])){ ?>
+                        <li class="page-scroll">
+                        <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                        </li>
+                <?php }
+                        else{ ?>
+                            <li class="page-scroll">
+                                <a href="<?= WebSiteLink; ?>user/login">connexion</a>
+                            </li>
+                        
+                        <?php }
+                ?>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -88,15 +81,13 @@
 
     <!-- Header -->
     <header>
-<?php 
-    while($donnees = $data['user']->fetch()){ 
-?>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <img class="img-responsive" src="img/profile.png" alt="">
                     <div class="intro-text">
-                        <span class="name"><?= $donnees['firstName'].' '.$donnees['lastName']; ?></span>
+                        <span class="name">BANNOUF Abdessamad</span>
                         <hr class="star-light">
                         <img src="../App/Public/file/moi.jpg" alt="Avatar" class="avatar">
                         <span class="skills">Développeur web</span> 
@@ -112,9 +103,7 @@
                 </div>
             </div>
         </div>
-<?php 
-    } 
-?>
+
     </header>
 
     <!-- Portfolio Grid Section -->
@@ -229,7 +218,7 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form method="post" action="" name="sentMessage" id="contactForm">
+                    <form method="post" action="http://localhost/Blog/User/sendMail" name="sentMessage" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -262,7 +251,7 @@
                         <div id="success"></div>
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                                <button name="send" type="submit" class="btn btn-success btn-lg">Send</button>
                             </div>
                         </div>
                     </form>
@@ -311,6 +300,9 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
+                    <?php if(isset($_SESSION['isAdmin'])){ ?>
+                        <a href="<?= WebSiteLink;?>admin/index">Administration</a>
+                    <?php } ?>
                     <div class="col-lg-12">
                         Copyright &copy; Blog 2021
                     </div>
@@ -542,7 +534,7 @@
                                     </strong>
                                 </li>
                             </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            <input type="submit" name ="send" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i>
                         </div>
                     </div>
                 </div>

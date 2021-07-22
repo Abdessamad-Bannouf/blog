@@ -16,6 +16,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <a>
             <button class="btn btn-success" onclick="add()">
                 Ajouter article

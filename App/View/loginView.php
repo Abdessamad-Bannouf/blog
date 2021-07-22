@@ -11,6 +11,7 @@
     </head>
 
     <body>  
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container">
         <br><p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
         <hr>

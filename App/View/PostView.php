@@ -9,6 +9,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container">
             <div id="blog" class="row"> 
                 <?php while ($donnees = $data['post']->fetch()){ ?>

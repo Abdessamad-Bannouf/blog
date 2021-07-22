@@ -10,6 +10,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container-fluid">
             <form method="post" action='<?= WebSiteLink ?>Admin/Update' enctype="multipart/form-data">            
                 <div class="container">

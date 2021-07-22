@@ -57,6 +57,13 @@
             parent::Render('App/View/LoginView.php',array());
         } 
 
+        public function logout(){
+            $this->session = new Session([],[]);
+            $this->session->deleteSession(array($_SESSION['firstName']));
+
+            parent::Render('App/View/LoginView.php',array());
+        }
+
         public function register(){
             $confirmPassword = null;
             $isRegister = null;
@@ -80,9 +87,8 @@
         }   
 
         public function home(){ 
-            $getUserInfo = $this->userModel->getUserInfo($_SESSION['mail']);
 
-            parent::Render('App/View/IndexView.php',array('user'=>$getUserInfo));  
+            parent::Render('App/View/IndexView.php',array());  
         }    
 
         public function sendMail(){

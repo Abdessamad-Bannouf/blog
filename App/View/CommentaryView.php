@@ -36,5 +36,6 @@
                     <?php } ?>
             <?php }} ?>
         </table>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>

@@ -106,7 +106,7 @@
             endwhile;
         ?>
         <a>
-       
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 
     <script type="text/javascript">

@@ -55,6 +55,7 @@
                 </div>
             </div>
         </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>
 

@@ -17,16 +17,16 @@
                             <h3 class="panel-title">Please sign up for Bootsnipp <small>It's free!</small></h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="post" action="<?= WebSiteLink; ?>/User/register">
+                            <form role="form" method="post" action="<?= WebSiteLink; ?>User/register">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="firstname" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                            <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="lastname" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            <input type="text" name="lastName" id="last_name" class="form-control input-sm" placeholder="Last Name">
                                         </div>
                                     </div>
                                 </div>

@@ -3,88 +3,58 @@
     <head>
         <title>Inscription</title>
         <meta charset="UTF-8"/>
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+        <link rel="stylesheet" href="../App/Public/template/css/register.css"/>
     </head>
 
     <body> 
-        <?php require 'App/View/NavBar.php'; ?> 
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container">
-        <br><p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
-        <hr>
-
-
-
-
-
-        <div class="card bg-light">
-            <article class="card-body mx-auto" style="max-width: 400px;">
-                <h4 class="card-title mt-3 text-center">Create Account</h4>
-                <p class="text-center">Get started with your free account</p>
-                <p>
-
-                    <a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Login via Twitter</a>
-                    <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Login via facebook</a>
-                </p>
-                <p class="divider-text">
-                    <span class="bg-light">OR</span>
-                </p>
-                <form method="post" action="<?= WebSiteLink; ?>/User/register">
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+            <div class="row centered-form">
+                <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Please sign up for Bootsnipp <small>It's free!</small></h3>
                         </div>
-                        <input name="lastName" class="form-control" placeholder="nom" type="text">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input name="firstName" class="form-control" placeholder="prénom" type="text">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
-                        </div>
-                        <input name="mail" class="form-control" placeholder="mail" type="email">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name="password" class="form-control" placeholder="Create password" type="password">
-                    </div> <!-- form-group// -->
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
-                        </div>
-                        <input name="confirmPassword" class="form-control" p laceholder="Repeat password" type="password">
-                    </div> <!-- form-group// -->                                      
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Create Account  </button>
-                    </div> <!-- form-group// -->      
-                    <p class="text-center">Have an account? <a href="<?= WebSiteLink; ?>/User/register">Log In</a> </p>                                                                 
-                </form>
-            </article>
-        </div> <!-- card.// -->
+                        <div class="panel-body">
+                            <form role="form" method="post" action="<?= WebSiteLink; ?>/User/register">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="firstname" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" name="lastname" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                        </div>
+                                    </div>
+                                </div>
 
-    </div> 
-    <!--container end.//-->
+                                <div class="form-group">
+                                    <input type="email" name="mail" id="email" class="form-control input-sm" placeholder="Email Address">
+                                </div>
 
-    <br><br>
-    <article class="bg-secondary mb-3">  
-    <div class="card-body text-center">
-        <h3 class="text-white mt-3">Bootstrap 4 UI KIT</h3>
-    <p class="h5 text-white">Components and templates  <br> for Ecommerce, marketplace, booking websites 
-    and product landing pages</p>   <br>
-    <p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
-    <i class="fa fa-window-restore "></i></a></p>
-    </div>
-    <br><br>
-    </article>
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="password" name="confirmPassword" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <input type="submit" value="Register" class="btn btn-info btn-block">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>
-

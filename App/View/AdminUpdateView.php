@@ -10,6 +10,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container-fluid">
             <form method="post" action='<?= WebSiteLink ?>Admin/Update' enctype="multipart/form-data">            
                 <div class="container">
@@ -88,6 +89,7 @@
                 </div>
             </form>
         </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
     <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">

@@ -9,6 +9,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container">
             <div id="blog" class="row"> 
                 <?php while ($donnees = $data['post']->fetch()){ ?>
@@ -25,5 +26,6 @@
                     <div class="col-md-12 gap10"></div>
             </div>
         </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>

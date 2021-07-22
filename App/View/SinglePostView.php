@@ -9,6 +9,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container">
             <div id="blog" class="row"> 
                 <?php $i=0; while ($donnees = $data['post']->fetch()){if($i==0){ ?>
@@ -73,5 +74,6 @@
            <?php } ?>       
             
         </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>

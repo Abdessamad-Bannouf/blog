@@ -80,9 +80,7 @@
         }   
 
         public function home(){ 
-            $getUserInfo = $this->userModel->getUserInfo($_SESSION['mail']);
-
-            parent::Render('App/View/IndexView.php',array('user'=>$getUserInfo));  
+            parent::Render('App/View/IndexView.php',array());  
         }    
 
         public function sendMail(){

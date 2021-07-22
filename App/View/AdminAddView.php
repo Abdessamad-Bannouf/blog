@@ -64,6 +64,7 @@
             </form>
         </div>
         <?php ?>
+        git push --set-upstream origin navbar
     </body>
 </html>
 

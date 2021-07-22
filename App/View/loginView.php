@@ -36,5 +36,5 @@
     		    </div>
     	    </div>
         </div>
-        <?php require 'App/View/Footer.php'; ?>
+        <?php require 'App/View/Footer.php'; ?> 
 </body>

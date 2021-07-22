@@ -26,6 +26,6 @@
                     <div class="col-md-12 gap10"></div>
             </div>
         </div>
-        <?php require 'App/View/Footer.php'; ?>
+        <?php require 'App/View/Footer.php'; ?> 
     </body>
 </html>

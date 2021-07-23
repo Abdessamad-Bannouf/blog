@@ -2,7 +2,7 @@
 
 # Description du besoin :
 
-Le projet est donc de développer votre blog professionnel. Ce site web se décompose en deux grands groupes de pages :
+Le projet est donc de développer votre blog professionnel. Ce site web se décompose en deux grands groupes de pages : <br/><br/>
 
 les pages utiles à tous les visiteurs
 les pages permettant d’administrer votre blog.

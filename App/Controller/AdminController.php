@@ -10,6 +10,8 @@
 
     use App\Classes\Date\Date;
 
+    use App\Classes\Security\Security;
+
     class AdminController extends Controller{
         private $adminModel;
         private $session;

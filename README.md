@@ -1,5 +1,6 @@
-blog
-Description du besoin :
+# blog
+
+# Description du besoin :
 
 Le projet est donc de développer votre blog professionnel. Ce site web se décompose en deux grands groupes de pages :
 
@@ -55,8 +56,9 @@ Sur la page présentant le détail d’un blog post, il faut afficher les inform
 Sur la page permettant de modifier un blog post, l’utilisateur a la possibilité de modifier les champs titre, chapô, auteur et contenu.
 
 Dans le footer menu, il doit figurer un lien pour accéder à l’administration du blog.
-Installation du projet :
 
-● clôner le projet.
-● importer le fichier .sql sur le serveur local.
-● Aller sur le lien http://localhost/Blog/User/home
+# Installation du projet :
+
+● clôner le projet. <br/>
+● importer le fichier .sql sur le serveur local. <br/>
+● Aller sur le lien http://localhost/Blog/User/home 

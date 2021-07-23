@@ -89,6 +89,7 @@
                 </div>
             </form>
         </div>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
     <script src="../../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">

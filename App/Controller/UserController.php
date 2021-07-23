@@ -57,6 +57,13 @@
             parent::Render('App/View/LoginView.php',array());
         } 
 
+        public function logout(){
+            $this->session = new Session([],[]);
+            $this->session->deleteSession(array($_SESSION['firstName']));
+
+            parent::Render('App/View/LoginView.php',array());
+        }
+
         public function register(){
             $confirmPassword = null;
             $isRegister = null;

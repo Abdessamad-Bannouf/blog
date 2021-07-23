@@ -1,0 +1,5 @@
+exclude_patterns:
+- "App/Public/template/js/jqBootstrapValidation.js"
+- "App/Public/template/vendor/bootstrap/js/bootstrap.js"
+- "App/Public/template/vendor/jquery/jquery.js" 
+- "**/*.rb"

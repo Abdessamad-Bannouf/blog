@@ -6,6 +6,7 @@
         <!-- Bootstrap Core CSS -->
         <link href="../App/Public/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="../App/Public/template/css/post.css" rel="stylesheet" type="text/css">
+        <link href="../App/Public/template/css/admin.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="../App/Public/css/post.css" />
         <script src="../App/Public/template/vendor/jquery/jquery.min.js" type="text/javascript"></script>
         
@@ -17,11 +18,20 @@
 
     <body>
         <?php require 'App/View/NavBar.php'; ?>
-        <a>
-            <button class="btn btn-success" onclick="add()">
-                Ajouter article
-            </button>
-        </a>
+      
+        <div class="admin-button">
+            <a id="link">
+                <button class="btn btn-success" onclick="add()">
+                    Ajouter article
+                </button>
+            </a>
+
+            <a id="link" href="<?= WebSiteLink; ?>commentary/show">
+                <button class="btn btn-secondary">
+                    Tous les commentaires !
+                </button>
+            </a>
+        </div>
 
         <div class="container-fluid">
             <form method="post" action='<?= WebSiteLink ?>admin/Add' enctype="multipart/form-data">            
@@ -82,7 +92,7 @@
         ?>
 
                 <div class="col-md-10 blogShort">
-                    <h1><?= $donnees['title'] ?></h1>
+                    <a href="<?= WebSiteLink; ?>post/show/<?= $donnees['post_id'] ?>"><h1><?= $donnees['title'] ?></h1></a>
                     <h3><?= $donnees['chapo'] ?></h3>
                     <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <article>
@@ -90,6 +100,8 @@
                     </article>
                     <a class="btn btn-danger pull-right marginBottom10" href="<?= WebSiteLink; ?>admin/delete/<?= $donnees['post_id']; ?>"><i class="fa fa-trash" style="color:white"></i></a> 
                     <a class="btn btn-warning pull-right marginBottom10" href="<?= WebSiteLink; ?>admin/update/<?= $donnees['post_id']; ?>" ><i class="fa fa-wrench" style="color:green"></i></a> 
+                
+                    <div><?= $donnees['image']; ?></div>
                 </div>
         <?php 
             endwhile;

@@ -17,8 +17,10 @@
             }     
         }
 
-        public function deleteSession(){ // Détruit la ou les session(s)
-            unset($this->session);
+        public function deleteSession($name = array()){ // Détruit la ou les session(s)
+            for($i=0; $i<count($name); $i++){
+                session_unset();
+            }   
         }
     }
 ?>

@@ -3,6 +3,7 @@
     use App\Model\Model; 
 
     class PostModel extends Model{
+
         public function getPost($id = false){
             
             if($id == false)

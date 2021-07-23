@@ -20,6 +20,7 @@
         <link href="../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="../../App/Public/template/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
         <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -81,6 +82,7 @@
                         <li class="page-scroll">
                             <a href="#contact">Contact</a>
                         </li>
+
                         <?php
                         if(isset($_SESSION['firstName'])){ ?>
                             <li class="page-scroll">
@@ -94,6 +96,7 @@
                             
                             <?php }
                     ?>
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

@@ -58,4 +58,3 @@
         <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>
-

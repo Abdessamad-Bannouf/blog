@@ -87,7 +87,6 @@
         }   
 
         public function home(){ 
-
             parent::Render('App/View/IndexView.php',array());  
         }    
 

@@ -10,6 +10,7 @@
     </head>
 
     <body>
+        <?php require 'App/View/NavBar.php'; ?>
         <div class="container-fluid">
             <form method="post" action='<?= WebSiteLink ?>' enctype="multipart/form-data">            
                 <div class="container">
@@ -63,6 +64,8 @@
                 </div>
             </form>
         </div>
+        <?php ?>
+        <?php require 'App/View/Footer.php'; ?>
     </body>
 </html>
 

@@ -10,8 +10,6 @@
 
     use App\Classes\Date\Date;
 
-    use App\Classes\Security\Security;
-
     class AdminController extends Controller{
         private $adminModel;
         private $session;
@@ -33,13 +31,15 @@
         } 
 
         public function index(){
-            $allPost = $this->adminModel->index();
+            if($this->isAdmin){
+                $allPost = $this->adminModel->index();
 
-            parent::Render('App/View/AdminView.php',array('post'=>$allPost));
+                parent::Render('App/View/AdminView.php',array('post'=>$allPost));
+            }
         }
 
 
-         public function update($id=false){
+        public function update($id=false){
             if($this->isAdmin){
                 if($id != false){
                     $getPost = $this->adminModel->updatePost($id);
@@ -56,8 +56,6 @@
                     $chapo = htmlspecialchars($_POST['chapo']);
                     $image = htmlspecialchars($_FILES['image']['name']);
                     $content = htmlspecialchars($_POST['content']);
-                    
-
                     $author = $_SESSION['user_id'];
                     $idPost = $_SESSION['idPost'];
                     

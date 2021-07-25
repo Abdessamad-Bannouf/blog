@@ -10,11 +10,14 @@
 
     use App\Classes\Date\Date;
 
+    use App\Classes\Regex\Regex;
+
     class UserController extends Controller{
         private $userModel;
         private $session;
         private $form;
         private $date;
+        private $regex;
 
         public function __construct(){
             $this->userModel = new userModel;
@@ -22,25 +25,35 @@
             $this->form = new Form;
 
             $this->date = Date::GetDate();
+
+            $this->regex = new Regex;
         } 
 
         public function login(){
+            $verifMail = null;
+            $verifPassword = null;
+            
             if(isset($_POST['mail']) AND isset($_POST['password'])){
                 
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
 
-                $getUserInfo = $this->userModel->getUserInfo($mail,$password);
-                $getUserInfo = $getUserInfo->fetchAll();
+                $verifMail = $this->regex->verifMail($mail);;
+                $verifPassword = $this->regex->verifPassword($password);
+   
+                if($verifMail AND $verifPassword){
+                    $getUserInfo = $this->userModel->getUserInfo($mail,$password);
+                    $getUserInfo = $getUserInfo->fetchAll();
 
-                $this->session = new Session(array("lastName","firstName", "user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0][5]));
-                $this->session->GetSession();
+                    $this->session = new Session(array("lastName","firstName", "user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0][5]));
+                    $this->session->GetSession();
 
-                if($getUserInfo[0]['isAdmin'])
-                    header('location: '. WebSiteLink.'User/admin');
-            }
+                    if($getUserInfo[0]['isAdmin'])
+                        header('location: '. WebSiteLink.'User/admin');
+                    }
+                }
 
-            parent::Render('App/View/LoginView.php',array());
+            parent::Render('App/View/LoginView.php',array('mail'=>$verifMail,'password'=>$verifPassword));
         } 
 
         public function logout(){

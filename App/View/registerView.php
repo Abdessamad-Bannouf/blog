@@ -14,25 +14,25 @@
                 <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Please sign up for Bootsnipp <small>It's free!</small></h3>
+                            <h3 class="panel-title">Inscrivez vous <small>C'est gratuit !</small></h3>
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post" action="<?= WebSiteLink; ?>/User/register">
                                 <div class="row">
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="firstname" id="first_name" class="form-control input-sm" placeholder="First Name">
+                                            <input type="text" name="firstName" id="first_name" class="form-control input-sm" placeholder="First Name">
                                         </div>
                                     </div>
                                     <div class="col-xs-6 col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <input type="text" name="lastname" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                            <input type="text" name="lastName" id="lastname" class="form-control input-sm" placeholder="Last Name">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <input type="email" name="mail" id="email" class="form-control input-sm" placeholder="Email Address">
+                                    <input type="email" name="mail" id="mail" class="form-control input-sm" placeholder="Email Address">
                                 </div>
 
                                 <div class="row">
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 
-                                <input type="submit" value="Register" class="btn btn-info btn-block">
+                                <input type="submit" value="S'enregistrer" class="btn btn-info btn-block">
                             </form>
                         </div>
                     </div>

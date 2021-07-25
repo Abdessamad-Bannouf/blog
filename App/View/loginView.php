@@ -18,9 +18,6 @@
                         </div>
                         <div class="panel-body">
                             <form role="form" method="post" action="<?= WebSiteLink; ?>/User/login">
-                                <?php if($data['mail'] == 1 OR $data['password'] == 1){ ?>
-                                    <p>mauvais identifiants</p>    
-                                <?php } ?>
                                 <div class="form-group">
                                     <input type="email" name="mail" id="email" class="form-control input-sm" placeholder="Email Address">
                                 </div>

@@ -30,7 +30,7 @@
             return preg_match($this->VerifPassword,$password);
         }
 
-        public function erifFirstName($firstName)
+        public function verifFirstName($firstName)
         {
             if(isset($firstName))
                 $firstName = htmlspecialchars($firstName);

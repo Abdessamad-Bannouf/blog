@@ -12,6 +12,8 @@
 
     use App\Classes\Security\Security;
 
+    use App\Classes\Regex\Regex;
+
     class UserController extends Controller{
         private $userModel;
         private $session;
@@ -28,40 +30,48 @@
             $this->date = Date::GetDate();
 
             $this->security = new Security;
+
+            $this->regex = new Regex;
         } 
 
         public function login(){
+            $verifMail = null;
+            $verifPassword = null;
+
             if(isset($_POST['mail']) AND isset($_POST['password'])){
                 
                 $mail = htmlspecialchars($_POST['mail']); 
                 $password = htmlspecialchars($_POST['password']);
 
+                $verifMail = $this->regex->verifMail($mail);;
+                $verifPassword = $this->regex->verifPassword($password);
+
                 $getUserInfo = $this->userModel->getUserInfo($mail);
                 $getUserInfo = $getUserInfo->fetchAll();
                 
                 //Ajouter la verif password-verify
-                $passwordVerified = $this->security->decryptPassword($password,$getUserInfo[0]['password']);
-
-                if($passwordVerified){
-                    $this->session = new Session(array("lastName","firstName","mail","isAdmin","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0]['isAdmin'],$getUserInfo[0]['user_id']));
-                    $this->session->GetSession();
-                
-                    if($getUserInfo[0]['isAdmin'])
-                        header('location: '. WebSiteLink.'Admin/Index');
-
-                        else
-                            return $this->home();                
+                if($verifMail AND $verifPassword){
+                    $passwordVerified = $this->security->decryptPassword($password,$getUserInfo[0]['password']);
+                    if($passwordVerified){
+                        $this->session = new Session(array("lastName","firstName","mail","isAdmin","user_id"),array($getUserInfo[0]['lastName'],$getUserInfo[0]['firstName'],$getUserInfo[0]['mail'],$getUserInfo[0]['isAdmin'],$getUserInfo[0]['user_id']));
+                        $this->session->GetSession();
+                    
+                        if($getUserInfo[0]['isAdmin'])
+                            header('location: '. WebSiteLink.'Admin/Index');
+                            else
+                                return $this->home();                
+                    }
                 }
             }
 
-            parent::Render('App/View/LoginView.php',array());
-        } 
+            parent::Render('App/View/LoginView.php',array('mail'=>$verifMail,'password'=>$verifPassword));
+        }
 
         public function logout(){
             $this->session = new Session([],[]);
             $this->session->deleteSession(array($_SESSION['firstName']));
 
-            parent::Render('App/View/LoginView.php',array());
+            header('location: '. WebSiteLink.'user/login');
         }
 
         public function register(){

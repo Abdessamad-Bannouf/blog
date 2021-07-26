@@ -75,13 +75,14 @@
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
+
             </div>
             <!-- /.container-fluid -->
         </nav>
 
+
         <!-- Header -->
         <header>
-
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
@@ -103,6 +104,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </header>
+
 
         </header>
 
@@ -297,6 +301,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="footer-below">
                 <div class="container">
                     <div class="row">

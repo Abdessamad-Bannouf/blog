@@ -4,8 +4,8 @@
 
     class AdminModel extends Model{
         public function index(){
-            $allPost = parent::SelectAll('*','post');
-            
+            $allPost = parent::SelectAll(array(),'post');            
+
             return $allPost;
         }
 
@@ -18,8 +18,8 @@
                 $updatePost = parent::SelectFilter(array('post_id','title','chapo','image','content','author','date'),'post','post_id='.$id.'');
                 
                 else
-                    $updatePost = parent::RequestModify('post',array('title','chapo','image','content','author','date'),array($title,$chapo,$image,$content,$author,$date),'post_id',$id);
-                         
+                    $updatePost = parent::RequestModify('post',array('title','chapo','image','content','author','date'),array($title,$chapo,$image,$content,$author,$date),'post_id',$id);           
+
             return $updatePost;
         }
 
@@ -27,4 +27,3 @@
             $deletePost = parent::RequestDelete('post','post_id',$id);
         }
     }
-?>

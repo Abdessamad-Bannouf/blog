@@ -61,7 +61,7 @@
             $this->session = new Session([],[]);
             $this->session->deleteSession(array($_SESSION['firstName']));
 
-            parent::Render('App/View/LoginView.php',array());
+            header('location: '. WebSiteLink.'User/Login');
         }
 
         public function register(){

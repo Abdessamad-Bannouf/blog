@@ -303,7 +303,7 @@
         <div class="footer-below">
             <div class="container">
                 <div class="row">
-                    <?php if($_SESSION['isAdmin']==1 AND $_SESSION['isAdmin'] == 1){ ?>
+                    <?php if(isset($_SESSION['isAdmin']) AND $_SESSION['isAdmin'] == 1){ ?>
                         <a href="<?= WebSiteLink;?>admin/index">Administration</a>
                     <?php } ?>
                     <div class="col-lg-12">

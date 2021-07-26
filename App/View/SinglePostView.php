@@ -42,7 +42,7 @@
                                                     <input type="submit" name="send" />
                                                 </form>
                                             </div>
-                                            <div class="action">
+                                            <!--<div class="action">
                                                 <button type="button" class="btn btn-primary btn-xs" title="Edit">
                                                     <span class="glyphicon glyphicon-pencil"></span>
                                                 </button>
@@ -53,11 +53,11 @@
                                                     <span class="glyphicon glyphicon-trash"></span>
                                                 </button>
                                             </div>
-                                        </div>
+                                        </div>!-->
                                     </div>
                                 </li>
                             </ul>
-                            <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+                            <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span>Envoyer</a>
                         </div>
                     </div>
                 </div>

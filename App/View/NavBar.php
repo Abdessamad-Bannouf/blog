@@ -62,8 +62,12 @@
                         <?php
                         if(isset($_SESSION['firstName'])){ ?>
                             <li class="page-scroll">
-                            <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                                <a><?= $_SESSION['firstName']; ?></a>
                             </li>
+                            <li class="page-scroll">
+                                <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                            </li>
+
                     <?php }
                             else{ ?>
                                 <li class="page-scroll">

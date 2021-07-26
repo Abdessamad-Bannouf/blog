@@ -65,6 +65,9 @@
                                 <a><?= $_SESSION['firstName']; ?></a>
                             </li>
                             <li class="page-scroll">
+                                <a href="<?= WebSiteLink; ?>post/show">Post</a>
+                            </li>
+                            <li class="page-scroll">
                                 <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
                             </li>
 

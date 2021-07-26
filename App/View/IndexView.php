@@ -34,7 +34,7 @@
     <body id="page-top" class="index">
 
         <!-- Navigation -->
-        <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <nav id="mainNav" class="navbar navbar-default navbar-custom">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header page-scroll">
@@ -62,8 +62,12 @@
                         <?php
                         if(isset($_SESSION['firstName'])){ ?>
                             <li class="page-scroll">
-                            <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                                <a><?= $_SESSION['firstName']; ?></a>
                             </li>
+                            <li class="page-scroll">
+                                <a href="<?= WebSiteLink; ?>user/logout">deconnexion</a>
+                            </li>
+
                     <?php }
                             else{ ?>
                                 <li class="page-scroll">
@@ -75,7 +79,6 @@
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
-
             </div>
             <!-- /.container-fluid -->
         </nav>

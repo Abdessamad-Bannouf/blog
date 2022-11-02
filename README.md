@@ -61,6 +61,14 @@ Dans le footer menu, il doit figurer un lien pour accéder à l’administration
 
 # Installation du projet : 
 
-● clôner le projet.<br/>
-● importer le fichier .sql sur le serveur local.<br/>
+● clôner le projet avec la commande : git clone https://github.com/Abdessamad-Bannouf/blog.git
+● importer sur PHPMyAdmin le fichier blog.sql qui se trouve dans le dossier database
 ● Aller sur le lien http://localhost/Blog/User/home
+
+
+
+# Authentification :
+
+Vous pouvez vous connecter avec 2 comptes crées : <br/>
+● User (role user) => email: user@test.com password: User1234<br/>
+● Admin (role admin) => email: admin@test.com password: Admin1234

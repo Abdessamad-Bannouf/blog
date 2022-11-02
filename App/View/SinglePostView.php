@@ -65,13 +65,13 @@
                 <?php  $i++; } ?>
             
             <article><p>
-                         <?php if($donnees['is_valid']){
+                        <?php if($donnees['is_valid']){
                             echo $donnees['firstname'].' : '.$donnees['content'];
-                         } 
-                         
-                         ?>  
+                        } 
+                        
+                        ?>  
                     </p></article>
-           <?php } ?>       
+            <?php } ?>       
             
         </div>
         <?php require 'App/View/Footer.php'; ?>

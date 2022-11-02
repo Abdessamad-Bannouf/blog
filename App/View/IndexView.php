@@ -62,7 +62,7 @@
                     <?php
                     if(isset($_SESSION['firstName'])){ ?>
                         <li class="page-scroll">
-                            <a href=""> <?= $_SESSION['firstName']; ?> </a>
+                            <a href="#"> <?= $_SESSION['firstName']; ?> </a>
                         </li>
                         <li class="page-scroll">
                                 <a href="<?= WebSiteLink; ?>post/show">Post</a>

@@ -1,16 +1,18 @@
 <?php 
-    namespace App\Classes\Security;
-    
-    class Security{
-        public function hashPassword($password){
-            $finalPassword = password_hash($password,PASSWORD_BCRYPT);
+namespace App\Classes\Security;
 
-            return $finalPassword;
-        }
+class Security
+{
+    public function hashPassword($password)
+    {
+        $finalPassword = password_hash($password,PASSWORD_BCRYPT);
 
-        public function decryptPassword($formPassword, $DBPassword){
-            return password_verify($formPassword, $DBPassword);
-
-        }
+        return $finalPassword;
     }
+
+    public function decryptPassword($formPassword, $DBPassword){
+        return password_verify($formPassword, $DBPassword);
+
+    }
+}
 ?>

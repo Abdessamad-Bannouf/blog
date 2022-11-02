@@ -24,7 +24,8 @@
 			return $this->myConnexion;
 		}
 
-		public function requestCustom($sql){
+		public function requestCustom($sql)
+		{
 			return $this->dbConnect()->query($sql);
 		}
 
@@ -53,7 +54,7 @@
 				else
 					$sql = "SELECT ".$columns." FROM ".$table; 
 			$all = $this->dbConnect()->query($sql);
-      
+
 			return $all;
 		}
 

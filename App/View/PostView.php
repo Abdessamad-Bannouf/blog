@@ -18,7 +18,7 @@
                     <h3><?= $donnees['chapo'] ?></h3>
                     <img src="../App/Public/img/<?= $donnees['image'] ?>" alt="post img" class="pull-left img-responsive thumb margin10 img-thumbnail">
                     <article><p>
-                         <?= $donnees['content'] ?>  
+                        <?= $donnees['content'] ?>  
                     </p></article>
                     <a class="btn btn-blog pull-right marginBottom10" href="http://bootsnipp.com/user/snippets/2RoQ">Lire plus</a> 
                 </div>

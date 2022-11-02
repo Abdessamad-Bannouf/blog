@@ -29,7 +29,7 @@
                                         <input type="text" name="title" class="input" value="<?= $data['post']['title']; ?>">
                                     <?php } 
 
-                                     else{ ?>
+                                    else{ ?>
                                         <input type="text" name="title" class="input">
                                     <?php } ?>
                                 </div>

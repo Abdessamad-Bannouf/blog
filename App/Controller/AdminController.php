@@ -1,97 +1,97 @@
 <?php 
-    namespace App\Controller;
-    use App\Controller\Controller;
+namespace App\Controller;
 
-    use App\Model\AdminModel;
+use App\Controller\Controller;
+use App\Model\AdminModel;
+use App\Classes\Session\Session;
+use App\Classes\Form\Form;
+use App\Classes\Date\Date;
+use App\Classes\Security\Security;
 
-    use App\Classes\Session\Session;
+class AdminController extends Controller
+{
+    private $adminModel;
+    private $session;
+    private $form;
+    private $security;
+    private $date;
+    private $isAdmin;
 
-    use App\Classes\Form\Form;
+    public function __construct()
+    {
+        $this->adminModel = new AdminModel;
 
-    use App\Classes\Date\Date;
+        $this->form = new Form;
 
-    use App\Classes\Security\Security;
+        $this->date = Date::GetDate();
 
-    class AdminController extends Controller{
-        private $adminModel;
-        private $session;
-        private $form;
-        private $security;
-        private $date;
-        private $isAdmin;
+        $this->security = new Security;
 
-        public function __construct(){
-            $this->adminModel = new AdminModel;
+        (bool) $this->isAdmin = (isset($_SESSION['isAdmin'])) ? $_SESSION['isAdmin'] : false;
+    } 
 
-            $this->form = new Form;
+    public function index()
+    {
+        if($this->isAdmin){
+            $allPost = $this->adminModel->index();
 
-            $this->date = Date::GetDate();
-
-            $this->security = new Security;
-
-            (bool) $this->isAdmin = (isset($_SESSION['isAdmin'])) ? $_SESSION['isAdmin'] : false;
-        } 
-
-        public function index(){
-            if($this->isAdmin){
-                $allPost = $this->adminModel->index();
-
-                parent::Render('App/View/AdminView.php',array('post'=>$allPost));
-            }
+            $this->render('App/View/AdminView.php',array('post'=>$allPost));
         }
+    }
 
 
-        public function update($id=false){
-            if($this->isAdmin){
-                if($id != false){
-                    $getPost = $this->adminModel->updatePost($id);
-                    $getPost = $getPost->fetch(); 
+    public function update($id=false)
+    {
+        if($this->isAdmin){
+            if($id != false){
+                $getPost = $this->adminModel->updatePost($id);
+                $getPost = $getPost->fetch(); 
 
-                    $this->session = new Session(array('idPost'),array($id));
-                    $this->session->getSession();
+                $this->session = new Session(array('idPost'),array($id));
+                $this->session->getSession();
 
-                    parent::Render('App/View/AdminUpdateView.php',array("post"=>$getPost));
-                }
-
-                if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-                    $title = htmlspecialchars($_POST['title']);
-                    $chapo = htmlspecialchars($_POST['chapo']);
-                    $image = htmlspecialchars($_FILES['image']['name']);
-                    $content = htmlspecialchars($_POST['content']);
-                    $author = $_SESSION['user_id'];
-                    $idPost = $_SESSION['idPost'];
-                    
-                    $this->adminModel->updatePost($idPost,$title,$chapo,$image,$content,$author,$this->date);
-
-                    header('location: '.WebSiteLink.'admin/index');
-                }
+                $this->render('App/View/AdminUpdateView.php',array("post"=>$getPost));
             }
-        }
 
-
-        public function add(){
-            if($this->isAdmin){
-                if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
-                    $title = htmlspecialchars($_POST['title']);
-                    $chapo = htmlspecialchars($_POST['chapo']);
-                    $image = htmlspecialchars($_FILES['image']['name']);
-                    $content = htmlspecialchars($_POST['content']);
-
-                    (int)$author = (int)$_SESSION['user_id'];
-
-                    $this->adminModel->addPost($title,$chapo,$image,$content,$author,$this->date);
-
-                    header('location: '.WebSiteLink.'admin/index');
-                }
-            }
-        }
-
-        public function delete($id){
-            if($this->isAdmin){
-                $this->adminModel->deletePost($id);
+            if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+                $title = htmlspecialchars($_POST['title']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                $image = htmlspecialchars($_FILES['image']['name']);
+                $content = htmlspecialchars($_POST['content']);
+                $author = $_SESSION['user_id'];
+                $idPost = $_SESSION['idPost'];
+                
+                $this->adminModel->updatePost($idPost,$title,$chapo,$image,$content,$author,$this->date);
 
                 header('location: '.WebSiteLink.'admin/index');
             }
         }
-
     }
+
+    public function add()
+    {
+        if($this->isAdmin){
+            if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 
+                $title = htmlspecialchars($_POST['title']);
+                $chapo = htmlspecialchars($_POST['chapo']);
+                $image = htmlspecialchars($_FILES['image']['name']);
+                $content = htmlspecialchars($_POST['content']);
+
+                (int)$author = (int)$_SESSION['user_id'];
+
+                $this->adminModel->addPost($title,$chapo,$image,$content,$author,$this->date);
+
+                header('location: '.WebSiteLink.'admin/index');
+            }
+        }
+    }
+
+    public function delete($id)
+    {
+        if($this->isAdmin){
+            $this->adminModel->deletePost($id);
+
+            header('location: '.WebSiteLink.'admin/index');
+        }
+    }
+}

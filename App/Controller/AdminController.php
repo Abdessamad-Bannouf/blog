@@ -44,13 +44,13 @@ class AdminController extends Controller
     {
         if($this->isAdmin){
             if($id != false){
-                $getPost = $this->adminModel->updatePost($id);
-                $getPost = $getPost->fetch(); 
+                $post = $this->adminModel->updatePost($id);
+                $post = $post->fetch(); 
 
                 $this->session = new Session(array('idPost'),array($id));
                 $this->session->getSession();
 
-                $this->render('App/View/AdminUpdateView.php',array("post"=>$getPost));
+                $this->render('App/View/AdminUpdateView.php',array("post"=>$post));
             }
 
             if(isset($_POST['title']) AND isset($_POST['chapo']) AND isset($_FILES['image']) AND isset($_POST['content'])){ 

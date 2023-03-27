@@ -12,20 +12,27 @@ class Controller
 		$url = rtrim($url,'/');
 		$url = explode('/',$url);
 
-		$this->controllerName = $url[0];
+		$this->controllerName = ucfirst($url[0]);
 		$this->methodName = $url[1];
 		if(!empty($url[2]))
 			$this->argumentName = $url[2];
 	}
 
 	public function searchController()
-	{ // Cherche le controller
-		$controllerPath = 'App\Controller\\'.$this->controllerName.'Controller.php'; // Enregistre le nom du controller dans $ControllerPath
+	{
+		// Cherche le controller
+		if(ENV === 'PROD')
+			$controllerPath = 'App/Controller/'.$this->controllerName.'Controller.php';
 
-		if(file_exists($controllerPath)){ // Vérifie si le répertoire du controller existe
+			else
+				$controllerPath = 'App\Controller\\'.$this->controllerName.'Controller.php'; // Enregistre le nom du controller dans $ControllerPath
+
+				if(file_exists($controllerPath)){ // Vérifie si le répertoire du controller existe
 			$objet = substr($controllerPath,0,-4); //Enlève le '.php'
+			$methodPath = 'App\Controller\\'.$this->controllerName.'Controller';
 
-			if(method_exists($objet, $this->methodName) AND empty($this->argumentName)){ // Vérifie si la méthode existe et si il n'y a pas d'argument
+			//if(method_exists('App\Controller\\'.$this->controllerName.'Controller', $this->methodName) AND empty($this->argumentName)){ // Vérifie si la méthode existe et si il n'y a pas d'argument
+			if(method_exists($methodPath, $this->methodName) AND empty($this->argumentName)){ // Vérifie si la méthode existe et si il n'y a pas d'argument
 				$controllerName = 'App\Controller\\'.$this->controllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 				$concernController = new $controllerName($this->controllerName, $this->methodName); // Instancie le controller concerné
 
@@ -33,7 +40,7 @@ class Controller
 				$concernController->$controllerMethod(); // Appelle la méthode concerné
 			}
 
-				else if(method_exists($objet, $this->methodName) AND !empty($this->argumentName)){ // Vérifie si la méthode existe et si il y a un argument	
+				else if(method_exists($methodPath, $this->methodName) AND !empty($this->argumentName)){ // Vérifie si la méthode existe et si il y a un argument	
 					$controllerName = 'App\Controller\\'.$this->controllerName.'Controller'; // Stocke l'endroit du controller dans $ControllerName
 					$concernController = new $controllerName($this->controllerName, $this->methodName, $this->argumentName); // Instancie le controller concerné
 

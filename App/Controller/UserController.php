@@ -1,21 +1,21 @@
-<?php 
+<?php
 namespace App\Controller;
 use App\Controller\Controller;
-use App\Model\userModel;
 use App\Classes\Session\Session;
 use App\Classes\Form\Form;
 use App\Classes\Form\Validate;
 use App\Classes\Date\Date;
 use App\Classes\Security\Security;
 use App\Classes\Regex\Regex;
+use App\Model\UserModel;
 
 class UserController extends Controller{
     private $userModel;
     private $session;
     private $form;
     private $security;
+    private $regex;
     private $date;
-
 
     public function __construct(){
         $this->userModel = new userModel;
@@ -52,7 +52,7 @@ class UserController extends Controller{
                     $this->session->GetSession();
                 
                     if($getUserInfo[0]['isAdmin'])
-                        header('location: '. WebSiteLink.'Admin/Index');
+                        header('location: '. WebSiteLink.'admin/index');
                         else
                             return $this->home();                
                 }
@@ -66,7 +66,10 @@ class UserController extends Controller{
         $this->session = new Session([],[]);
         $this->session->deleteSession(array($_SESSION['firstName']));
 
-        header('location: '. WebSiteLink.'user/login');
+        if(!$_SESSION['firstName']) {
+            header("location: ". WebSiteLink."user/login",TRUE,301);
+            exit();
+        }
     }
 
     public function register()
@@ -74,7 +77,7 @@ class UserController extends Controller{
         $confirmPassword = null;
         $isRegister = null;
         $errors = null;
-        $repeatPassword = false;
+        $repeatPassword = true;
 
         if(isset($_POST['lastName']) AND isset($_POST['firstName']) AND isset($_POST['mail']) AND isset($_POST['password']) AND isset($_POST['confirmPassword'])){
             
@@ -92,6 +95,7 @@ class UserController extends Controller{
                 $password = htmlspecialchars($_POST['password']);
                 
                 $confirmPassword = isset($_POST['confirmPassword']) ? htmlspecialchars($_POST['confirmPassword']) : false;
+
                 $repeatPassword = $password == $confirmPassword;
 
                 if($repeatPassword AND $errors->errors() === null){
@@ -125,18 +129,18 @@ class UserController extends Controller{
             if(!empty($_POST['name']) AND !empty($_POST['email']) AND !empty($_POST['phone']) AND !empty($_POST['message']) AND filter_var($_POST['email'],FILTER_VALIDATE_EMAIL) != false)
             {
                 $name = strip_tags(htmlspecialchars($_POST['name']));
-                $email_address = strip_tags(htmlspecialchars($_POST['email']));
+                $emailAddress = strip_tags(htmlspecialchars($_POST['email']));
                 $phone = strip_tags(htmlspecialchars($_POST['phone']));
                 $message = strip_tags(htmlspecialchars($_POST['message']));
                     
                 // Create the email and send the message
                 $to = 'abdessamad.bannouf@laposte.net'; // Add your email address inbetween the '' replacing yourname@yourdomain.com - This is where the form will send a message to.
-                $email_subject = "Website Contact Form:  $name";
-                $email_body = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $email_address\n\nPhone: $phone\n\nMessage:\n$message";
+                $emailSubject = "Website Contact Form:  $name";
+                $emailBody = "You have received a new message from your website contact form.\n\n"."Here are the details:\n\nName: $name\n\nEmail: $emailAddress\n\nPhone: $phone\n\nMessage:\n$message";
                 $headers = "From: noreply@yourdomain.com\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
-                $headers .= "Reply-To: $email_address";	
+                $headers .= "Reply-To: $emailAddress";	
 
-                mail($to,$email_subject,$email_body,$headers);
+                mail($to,$emailSubject,$emailBody,$headers);
 
                 return true;	
             }		

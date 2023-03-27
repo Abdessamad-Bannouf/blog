@@ -17,7 +17,7 @@
                             <h3 class="panel-title">Connectez-vous</h3>
                         </div>
                         <div class="panel-body">
-                            <form role="form" method="post" action="<?= WebSiteLink; ?>/User/login">
+                            <form role="form" method="post" action="<?= WebSiteLink; ?>User/login">
                                 <?php if($data['mail'] == 1 OR $data['password'] == 1){ ?>
                                     <p>mauvais identifiants</p>    
                                 <?php } ?>
@@ -31,7 +31,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <a href="http://localhost/Blog/User/register">Pas de compte ? S'enregistrer</a>
+                                    <a href="<?= WebSiteLink; ?>User/register">Pas de compte ? S'enregistrer</a>
                                 </div>
                                 
                                 <input type="submit" value="Se connecter" class="btn btn-info btn-block">

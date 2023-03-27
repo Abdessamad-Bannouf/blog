@@ -34,7 +34,7 @@
         </div>
 
         <div class="container-fluid">
-            <form method="post" action='<?= WebSiteLink ?>admin/Add' enctype="multipart/form-data">            
+            <form method="post" action='<?= WebSiteLink ?>admin/add' enctype="multipart/form-data">            
                 <div class="container">
                     <div class="formBox">
                         <div class="row">

@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\Controller;
-use App\Model\commentaryModel;
+use App\Model\CommentaryModel;
 use App\Classes\Session\Session;
 use App\Classes\Form\Form;
 use App\Classes\Date\Date;

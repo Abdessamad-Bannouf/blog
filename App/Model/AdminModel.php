@@ -19,7 +19,7 @@ class AdminModel extends Model
 
     public function updatePost($id=false,$title=false,$chapo=false,$image=false,$content=false,$author=false,$date=false)
     {
-        if($title==false OR $chapo==false OR $image==false OR $content==false OR$author==false OR $date==false)
+        if(!$title OR !$chapo OR !$image OR !$content OR !$author OR !$date)
             $updatePost = parent::SelectFilter(array('post_id','title','chapo','image','content','author','date'),'post','post_id='.$id.'');
             
             else
